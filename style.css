@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+h1 img{
+    width: 400px;
+    margin: 0 auto;
+    display: block;
+}
+header{
+    padding: 10px;
+    text-align: right;
+    color: #fff;
+    background: #01a7e1;
+}
+hr{
+    border: 2px solid #01a7e1;
+    width: 90%;
+}
+a{
+    outline: 0;
+    text-decoration: none;
+}
+nav{
+    text-align: center;
+    width: 500px;
+    margin: 20px auto;
+}
+nav a{
+    color: #fff;
+    border-radius: 100px;
+    float: left;
+    padding: 10px;
+    line-height: 12px;
+    font-size: 16px;
+    padding-left: 133px;
+    background: right/30px url(blue-circle.svg) no-repeat, 4px url(blue-line.svg) repeat-x;
+}
+nav a.future{
+    background-image: url(grey-circle.svg), url(grey-line.svg);
+}
+nav a:first-child{
+    padding-left: 13px;
+    background-image: url(blue-circle.svg) no-repeat;
+}
