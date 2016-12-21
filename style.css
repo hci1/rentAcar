@@ -7,6 +7,10 @@ h1 img{
     margin: 0 auto;
     display: block;
 }
+h2{
+    background: center/30px url(white-circle.svg) no-repeat, center/.1px 2px url(blue-line.svg) repeat-x;
+    text-align: center;
+}
 header{
     padding: 10px;
     text-align: right;
@@ -14,12 +18,15 @@ header{
     background: #01a7e1;
 }
 hr{
-    border: 2px solid #01a7e1;
-    width: 90%;
+    background: center/.1px 2px url(blue-line.svg) repeat-x;
+    border: 0;
+    height: 2px;
+    width: 700px;
 }
 a{
     outline: 0;
     text-decoration: none;
+    cursor: pointer;
 }
 nav{
     text-align: center;
@@ -42,4 +49,19 @@ nav a.future{
 nav a:first-child{
     padding-left: 10px;
     background-image: url(blue-circle.svg), none;
+}
+section{
+    width: 700px;
+    padding: 0 50px;
+    margin: 70px auto 10px;
+    opacity: 0;
+    display: none;
+    transition: .1s;
+}
+section:first-child{
+    opacity: 1;
+    display: block;
+}
+p.navilinks{
+    text-align: right;
 }

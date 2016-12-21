@@ -1,16 +1,39 @@
-<!doctype html><html><head>
+<!doctype html><html lang="de"><head>
     <title>rentAcar</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src="script.js"></script>
 </head><body>
     <header id="time">12:00</header>
-    <h1><a href="index.html"><img src="logo.jpg" alt="rentAcar"/></a></h1>
+    <h1><a href="index.html"><img src="logo.jpg" alt="rentAcar"></a></h1>
     <hr>
     <nav>
-        <a href="#a" title="A">A</a>
-        <a href="#b" title="B">B</a>
-        <a href="#c" title="C">C</a>
-        <a href="#d" title="D" class="future">D</a>
+        <a id="link-a" onclick="display('a')" title="A">A</a>
+        <a id="link-b" onclick="display('b')" title="B" class="future">B</a>
+        <a id="link-c" onclick="display('c')" title="C" class="future">C</a>
+        <a id="link-d" onclick="display('d')" title="D" class="future">D</a>
     </nav>
+
+    <main>
+        <section id="section-a">
+            <h2>A</h2>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p> 
+            <p class="navilinks"><a onclick="display('d')">&larr; zurück</a> &middot; <a onclick="display('b')">weiter &rarr;</a>
+        </section>
+        <section id="section-b">
+            <h2>B</h2>
+            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+            <p class="navilinks"><a onclick="display('a')">&larr; zurück</a> &middot; <a onclick="display('c')">weiter &rarr;</a>
+        </section>
+        <section id="section-c">
+            <h2>C</h2>
+            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. </p>
+            <p class="navilinks"><a onclick="display('b')">&larr; zurück</a> &middot; <a onclick="display('d')">weiter &rarr;</a>
+        </section>
+        <section id="section-d">
+            <h2>D</h2>
+            <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+            <p class="navilinks"><a onclick="display('c')">&larr; zurück</a> &middot; <a onclick="display('a')">weiter &rarr;</a>
+        </section>
+    </main>
 </body></html>
