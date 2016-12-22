@@ -24,6 +24,9 @@ header{
 #user{
     float: left;
 }
+form{
+    text-align: center;
+}
 hr{
     border: solid 1px #01a7e1;
     width: 700px;
@@ -86,6 +89,12 @@ section{
 }
 #navilinks a#forth{
     background-image: url(../media/style/grey-triangle-right.svg);
+}
+#section-start a{
+    display: block;
+    float: left;
+    text-align: center;
+    font-size: 24px;
 }
 #section-start img{
     width: 250px;

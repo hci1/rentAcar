@@ -1,5 +1,18 @@
-function login(){
-    alert("TODO");
+function userStatus(type){
+    var message = document.getElementById("user");
+
+    if(type === login){
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        if(username !== "" && password !== ""){
+            display("start");
+            message.innerHTML = "Hallo, " + username + "! <a onclick='userStatus(logout)'>Abmelden</a>";
+        }
+    }else if(type === logout){
+        message.innerHTML = "<a onclick=\"display('login')\">Anmelden</a>";
+        display("start");
+    }
 }
 
 function display(openID){
@@ -7,7 +20,9 @@ function display(openID){
     var navs = document.getElementsByTagName("nav");
     var neighbors = getNeighbors(openID);
 
-    if (openID === "start" || openID === "success"){
+    var specialSections = ["start", "success", "login"]
+
+    if (specialSections.indexOf(openID) !== -1){
         document.getElementById("navilinks").style.display = "none";
 
         for(var i = 0; i < navs.length; i++){

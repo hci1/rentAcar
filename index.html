@@ -6,8 +6,8 @@
     <script type="text/javascript" src="scripts/data.js"></script>
 </head><body>
     <header>
-        <span id="user"><a onclick="login()">Login</a></span>
-        <span id="time">12:00</span>
+        <span id="user"><a onclick="display('login')">Anmelden</a></span>
+        <span id="time"></span>
     </header>
 
     <h1><a href="index.html"><img src="media/logo.png" alt="rentAcar"></a></h1>
@@ -15,8 +15,16 @@
 
     <main>
         <section id="section-start">
-            <a onclick="choose('car_rental')"><img src="media/options/car-rental.png"/></a>
-            <a onclick="choose('tourism')"><img src="media/options/tourism.png"/></a>
+            <a onclick="choose('car_rental')"><img src="media/options/car-rental.png"/><br>Autovermietung</a>
+            <a onclick="choose('tourism')"><img src="media/options/tourism.png"/><br>Städte</a>
+        </section>
+
+        <section id="section-login">
+            <form action="#">
+                <input required id="username" type="text" placeholder="Benutzername">
+                <input required id="password" type="password" placeholder="Kennwort"/>
+                <input type="submit" value="Anmelden" onclick="userStatus(login)">
+            </form>
         </section>
     </main>
 
