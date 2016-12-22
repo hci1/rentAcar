@@ -3,37 +3,92 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style/main.css">
     <script type="text/javascript" src="scripts/display.js"></script>
+    <script type="text/javascript" src="scripts/data.js"></script>
 </head><body>
-    <header id="time">12:00</header>
-    <h1><a href="index.html"><img src="media/logo.jpg" alt="rentAcar"></a></h1>
+    <header>
+        <span id="user"><a onclick="login()">Login</a></span>
+        <span id="time">12:00</span>
+    </header>
+
+    <h1><a href="index.html"><img src="media/logo.png" alt="rentAcar"></a></h1>
     <hr>
-    <nav>
-        <a id="link-a" onclick="display('a')" title="A">A</a>
-        <a id="link-b" onclick="display('b')" title="B" class="future">B</a>
-        <a id="link-c" onclick="display('c')" title="C" class="future">C</a>
-        <a id="link-d" onclick="display('d')" title="D" class="future">D</a>
-    </nav>
 
     <main>
-        <section id="section-a">
-            <h2>A</h2>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
-            <p class="navilinks"><a onclick="display('d')">&larr; zurück</a> &middot; <a onclick="display('b')">weiter &rarr;</a></p>
-        </section>
-        <section id="section-b">
-            <h2>B</h2>
-            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-            <p class="navilinks"><a onclick="display('a')">&larr; zurück</a> &middot; <a onclick="display('c')">weiter &rarr;</a></p>
-        </section>
-        <section id="section-c">
-            <h2>C</h2>
-            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. </p>
-            <p class="navilinks"><a onclick="display('b')">&larr; zurück</a> &middot; <a onclick="display('d')">weiter &rarr;</a></p>
-        </section>
-        <section id="section-d">
-            <h2>D</h2>
-            <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-          <p class="navilinks"><a onclick="display('c')">&larr; zurück</a> &middot; <a onclick="display('a')">weiter &rarr;</a></p>
+        <section id="section-start">
+            <a onclick="choose('car_rental')"><img src="media/options/car-rental.png"/></a>
+            <a onclick="choose('tourism')"><img src="media/options/tourism.png"/></a>
         </section>
     </main>
+
+    <nav class="car_rental five_items">
+        <a id="link-car" onclick="display('car')" title="Auto"><img src="media/status/car.png"></a>
+        <a id="link-interior" onclick="display('interior')" title="Innenraum" class="future"><img src="media/status/interior.png"></a>
+        <a id="link-seat" onclick="display('seat')" title="Extras" class="future"><img src="media/status/seat.png"></a>
+        <a id="link-calendar" onclick="display('calendar')" title="Fahrt" class="future"><img src="media/status/calendar.png"></a>
+        <a id="link-payment" onclick="display('payment')" title="Bezahlen" class="future"><img src="media/status/payment.png"></a>
+    </nav>
+
+    <main class="car_rental">
+        <section id="section-car">
+            <h2><span>Typ</span></h2>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+        </section>
+
+        <section id="section-interior">
+            <h2><span>Innenraum</span></h2>
+            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+        </section>
+
+        <section id="section-seat">
+            <h2><span>Extras</span></h2>
+            <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. </p>
+        </section>
+
+        <section id="section-calendar">
+            <h2><span>Fahrt</span></h2>
+            <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+        </section>
+
+        <section id="section-payment">
+            <h2><span>Zahlung</span></h2>
+            <p>Magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore. </p>
+        </section>
+    </main>
+
+    <nav class="tourism four_items">
+        <a id="link-city" onclick="display('city')" title="Stadt"><img src="media/status/city.png"></a>
+        <a id="link-sights" onclick="display('sights')" title="Sehenswürdigkeiten" class="future"><img src="media/status/sights.png"></a>
+        <a id="link-details" onclick="display('details')" title="Details" class="future"><img src="media/status/calendar.png"></a>
+        <a id="link-pay" onclick="display('pay')" title="Bezahlen" class="future"><img src="media/status/payment.png"></a>
+    </nav>
+
+    <main class="tourism">
+        <section id="section-city">
+            <h2><span>Stadt</span></h2>
+            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </p>
+        </section>
+
+        <section id="section-sights">
+            <h2><span>Sehenswürdigkeiten</span></h2>
+            <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+        </section>
+
+        <section id="section-details">
+            <h2><span>Fahrt</span></h2>
+            <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+        </section>
+
+        <section id="section-pay">
+            <h2><span>Zahlung</span></h2>
+            <p>Magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore. </p>
+        </section>
+    </main>
+
+    <main>
+        <section id="section-success">
+            <p>Ihre Bestellung war erfolgreich. </p>
+        </section>
+    </main>
+
+    <div id="navilinks"><a id="forth"></a><a id="back"></a></div>
 </body></html>

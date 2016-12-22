@@ -1,6 +1,33 @@
+function login(){
+    alert("TODO");
+}
+
 function display(openID){
     var sections = document.getElementsByTagName("section");
     var navs = document.getElementsByTagName("nav");
+    var neighbors = getNeighbors(openID);
+
+    if (openID === "start" || openID === "success"){
+        document.getElementById("navilinks").style.display = "none";
+
+        for(var i = 0; i < navs.length; i++){
+            navs[i].style.display = "none";
+        }
+    }
+
+    if(neighbors[0] !== ""){
+        document.getElementById("back").onclick = function(){display(neighbors[0])};
+        document.getElementById("back").style.opacity = 1;
+    }else{
+        document.getElementById("back").style.opacity = 0;
+    }
+
+    if(neighbors[1] !== ""){
+        document.getElementById("forth").onclick = function(){display(neighbors[1])};
+        document.getElementById("forth").style.opacity = 1;
+    }else{
+        document.getElementById("forth").style.opacity = 0;
+    }
 
     for(var i = 0; i < navs.length; i++){
         var links = navs[i].getElementsByTagName("a");
@@ -33,14 +60,46 @@ function display(openID){
     }, 100);
 }
 
+function getNeighbors(id){
+    var neighbors = [];
+    var index
+
+    sections.forEach(function(section){
+        if ((index = section.indexOf(id)) !== -1){
+            if(index === 0){
+                neighbors.push("start");
+                neighbors.push(section[index+1]);
+            }else if(index === section.length-1){
+                neighbors.push(section[index-1]);
+                neighbors.push("success");
+            }else{
+                neighbors.push(section[index-1]);
+                neighbors.push(section[index+1]);
+            }
+        }
+    });
+
+    return neighbors !== []? neighbors: ["", ""];
+}
+
+function choose(tourType){
+    var items = document.getElementsByClassName(tourType);
+
+    items[0].style.display = "block";
+    display(items[1].getElementsByTagName("section")[0].id.split("-")[1]);
+
+    document.getElementById("navilinks").style.display = "block";
+}
+
 function displayTime() {
     var date = new Date();
     var hour = "0"  + date.getHours();
-    var minute = "0" + date.getMinutes()
-    document.getElementsByTagName("header")[0].innerHTML = hour.slice(-2) + ":" + minute.slice(-2);
+    var minute = "0" + date.getMinutes();
+    document.getElementById("time").innerHTML = hour.slice(-2) + ":" + minute.slice(-2);
 }
 
 window.onload = function() {
-    displayTime()
+    displayTime();
     setInterval(displayTime, 60000);
+    display("start");
 }

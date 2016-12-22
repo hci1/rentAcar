@@ -8,15 +8,21 @@ h1 img{
     display: block;
 }
 h2{
-    background: center/30px url(../media/white-circle.svg) no-repeat,
-                center/.1px 2px url(../media/blue-pixel.svg) repeat-x;
+    background: center/2px url(../media/style/blue-square.svg) repeat-x;
     text-align: center;
+}
+h2 span{
+    padding: 0 10px;
+    background: url(../media/style/white-square.svg);
 }
 header{
     padding: 10px;
     text-align: right;
     color: #fff;
     background: #01a7e1;
+}
+#user{
+    float: left;
 }
 hr{
     border: solid 1px #01a7e1;
@@ -28,40 +34,61 @@ a{
     cursor: pointer;
 }
 nav{
+    display: none;
     text-align: center;
-    width: 500px;
+    width: 600px;
     margin: 20px auto;
+}nav.four_items{
+    width: 500px;
 }
 nav a{
     color: #fff;
     border-radius: 100px;
     float: left;
-    padding: 10px;
+    padding: 10px 0px 10px 96px;
     line-height: 12px;
     font-size: 16px;
-    padding-left: 133px;
-    background: right/30px url(../media/blue-circle.svg) no-repeat,
-                5px url(../media/blue-line.svg) repeat-x;
+    background: right/40px url(../media/style/blue-circle.svg) no-repeat, 
+                0 url(../media/style/blue-line.svg) repeat-x
+}
+nav a img{
+    width: 40px;
+    height: 40px;
 }
 nav a.future{
-    background-image: url(../media/grey-circle.svg), url(../media/grey-line.svg);
+    background-image: url(../media/style/grey-circle.svg), url(../media/style/grey-line.svg);
 }
 nav a:first-child{
     padding-left: 10px;
-    background-image: url(../media/blue-circle.svg), none;
+    background-image: url(../media/style/blue-circle.svg), none;
 }
 section{
     width: 700px;
     padding: 0 50px;
-    margin: 70px auto 10px;
+    margin: 85px auto 10px;
     opacity: 0;
     display: none;
     transition: .1s;
 }
-section:first-child{
-    opacity: 1;
-    display: block;
-}
-p.navilinks{
+#navilinks{
+    display: none;
+    margin: 0 auto;
+    width: 700px;
     text-align: right;
+}
+#navilinks a{
+    margin: 0 0 0 10px;
+    display: block;
+    width: 25px;
+    height: 50px;
+    float: right;
+    background: 0/25px url(../media/style/grey-triangle-left.svg) no-repeat;
+}
+#navilinks a#forth{
+    background-image: url(../media/style/grey-triangle-right.svg);
+}
+#section-start img{
+    width: 250px;
+    height: 250px;
+    margin: 15px 48px;
 }
