@@ -15,6 +15,11 @@ h2 a, h2 span{
     padding: 0 10px;
     background: url(../media/style/white-square.svg);
 }
+h3{
+    opacity: 0;
+    transition: 1s;
+    text-align: center;
+}
 header{
     padding: 10px;
     text-align: right;
@@ -120,4 +125,9 @@ section{
     width: 250px;
     height: 250px;
     margin: 15px 48px;
+}
+#loader{
+    display: block;
+    margin: 0 auto;
+    transition: 1s;
 }

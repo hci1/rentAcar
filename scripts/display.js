@@ -59,6 +59,13 @@ function display(openID){
             document.getElementById("navilinks").style.display = "none";
         }
 
+        if(openID === "success"){
+            setTimeout(function(){
+                document.getElementById("thanks").style.opacity = 1;
+                document.getElementById("loader").style.opacity = 0;
+            }, 1000);
+        }
+
         for(var i = 0; i < navs.length; i++){
             navs[i].style.display = "none";
         }
