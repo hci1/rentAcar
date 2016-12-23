@@ -50,10 +50,9 @@ function display(openID){
     var sections = document.getElementsByTagName("section");
     var navs = document.getElementsByTagName("nav");
     var neighbors = getNeighbors(openID);
+    var options = document.getElementsByClassName("options");
 
-    var specialSections = ["start", "success", "login"]
-
-    if (specialSections.indexOf(openID) !== -1){
+    if (["start", "success", "login"].indexOf(openID) !== -1){
         if(openID === "login"){
             document.getElementById("navilinks").style.display = "block";
         }else{
@@ -93,8 +92,9 @@ function display(openID){
         }
     }
 
-    for(var i = 0; i < sections.length; i++){
-        sections[i].style.opacity = 0;
+    for(var i = 1; i < options.length; i+=2){
+        options[i].style.opacity = 0;
+        options[i].style.display = "none";
     }
 
     var section = document.getElementById("section-" + openID);
@@ -103,6 +103,10 @@ function display(openID){
     if (firstOption !== undefined){
         firstOption.style.display = "block";
         firstOption.style.opacity = 1;
+    }
+
+    for(var i = 0; i < sections.length; i++){
+        sections[i].style.opacity = 0;
     }
 
     setTimeout(function(){
