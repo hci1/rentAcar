@@ -2,12 +2,21 @@ function userStatus(type){
     var message = document.getElementById("user");
 
     if(type === login){
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
+        var username = document.getElementById("username");
+        var password = document.getElementById("password");
+        var error = document.getElementById("login_error");
 
-        if(username !== "" && password !== ""){
+        if(username.value !== "" && password.value !== ""){
             display("start");
-            message.innerHTML = "Hallo, " + username + "! <a onclick='userStatus(logout)'>Abmelden</a>";
+            message.innerHTML = "Hallo, " + username.value +
+                    "! (<a onclick='userStatus(logout)'>Abmelden</a>)";
+
+            username.value = "";
+            password.value = "";
+            error.innerHTML = "";
+        }else{
+            error.innerHTML =
+                "Bitte geben Sie sowohl Ihren Benutzernamen als auch Ihr Kennwort ein.";
         }
     }else if(type === logout){
         message.innerHTML = "<a onclick=\"display('login')\">Anmelden</a>";
@@ -20,11 +29,21 @@ function show(optionsHeader){
     var index = [].indexOf.call(options, optionsHeader);
     var option = options[index + 1];
 
-    if(option.style.display === "block"){
-        option.style.display = "none";
-    }else{
-        option.style.display = "block";
+    for(var i = 1; i < options.length; i+=2){
+        options[i].style.opacity = 0;
     }
+
+    setTimeout(function(){
+        for(var i = 1; i < options.length; i+=2){
+            options[i].style.display = "none";
+        }
+
+        option.style.display = "block";
+
+        setTimeout(function(){
+            option.style.opacity = 1;
+        }, 100);
+    }, 100);
 }
 
 function display(openID){
@@ -35,7 +54,11 @@ function display(openID){
     var specialSections = ["start", "success", "login"]
 
     if (specialSections.indexOf(openID) !== -1){
-        document.getElementById("navilinks").style.display = "none";
+        if(openID === "login"){
+            document.getElementById("navilinks").style.display = "block";
+        }else{
+            document.getElementById("navilinks").style.display = "none";
+        }
 
         for(var i = 0; i < navs.length; i++){
             navs[i].style.display = "none";
@@ -75,10 +98,11 @@ function display(openID){
     }
 
     var section = document.getElementById("section-" + openID);
-    var firstOptions = section.getElementsByTagName("div")[0];
+    var firstOption = section.getElementsByTagName("div")[0];
 
-    if (firstOptions !== undefined){
-        firstOptions.style.display = "block";
+    if (firstOption !== undefined){
+        firstOption.style.display = "block";
+        firstOption.style.opacity = 1;
     }
 
     setTimeout(function(){
@@ -113,7 +137,7 @@ function getNeighbors(id){
         }
     });
 
-    return neighbors !== []? neighbors: ["", ""];
+    return neighbors.length !== 0? neighbors: ["start", ""];
 }
 
 function choose(tourType){

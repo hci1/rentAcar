@@ -11,7 +11,7 @@ h2{
     background: center/2px url(../media/style/blue-square.svg) repeat-x;
     text-align: center;
 }
-h2 a{
+h2 a, h2 span{
     padding: 0 10px;
     background: url(../media/style/white-square.svg);
 }
@@ -25,7 +25,24 @@ header{
     float: left;
 }
 form{
-    text-align: center;
+    text-align: right;
+    width: 400px;
+    margin: 0 auto;
+}
+input{
+    border: thin solid;
+    padding: 5px;
+    color: #545454;
+    transition: .5s;
+    background: transparent
+}input:focus{
+    color: #000;
+    border-color: #01a7e1;
+}
+#login_error{
+    color: #b00;
+    font-weight: bold;
+    text-align: left;
 }
 hr{
     border: solid 1px #01a7e1;
@@ -35,6 +52,9 @@ a{
     outline: 0;
     text-decoration: none;
     cursor: pointer;
+}
+div.options{
+    transition: .1s;
 }
 nav, div.options{
     display: none;
@@ -52,7 +72,7 @@ nav a{
     line-height: 12px;
     font-size: 16px;
     background: right/40px url(../media/style/blue-circle.svg) no-repeat, 
-                0 url(../media/style/blue-line.svg) repeat-x
+                0 url(../media/style/blue-line.svg) repeat-x;
 }
 nav a img{
     width: 40px;

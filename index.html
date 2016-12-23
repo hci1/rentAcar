@@ -20,10 +20,12 @@
         </section>
 
         <section id="section-login">
+            <h2><span>Anmelden</span></h2>
             <form action="#">
-                <input required id="username" type="text" placeholder="Benutzername">
-                <input required id="password" type="password" placeholder="Kennwort"/>
-                <input type="submit" value="Anmelden" onclick="userStatus(login)">
+                <p>Benutzername: <input id="username" type="text"></p>
+                <p>Kennwort: <input id="password" type="password"/></p>
+                <p><input type="submit" value="Anmelden" onclick="userStatus(login)"></p>
+                <p id="login_error"></p>
             </form>
         </section>
     </main>
