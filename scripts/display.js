@@ -15,6 +15,18 @@ function userStatus(type){
     }
 }
 
+function show(optionsHeader){
+    var options = document.getElementsByClassName("options");
+    var index = [].indexOf.call(options, optionsHeader);
+    var option = options[index + 1];
+
+    if(option.style.display === "block"){
+        option.style.display = "none";
+    }else{
+        option.style.display = "block";
+    }
+}
+
 function display(openID){
     var sections = document.getElementsByTagName("section");
     var navs = document.getElementsByTagName("nav");
@@ -62,15 +74,22 @@ function display(openID){
         sections[i].style.opacity = 0;
     }
 
+    var section = document.getElementById("section-" + openID);
+    var firstOptions = section.getElementsByTagName("div")[0];
+
+    if (firstOptions !== undefined){
+        firstOptions.style.display = "block";
+    }
+
     setTimeout(function(){
         for(var i = 0; i < sections.length; i++){
             sections[i].style.display = "none";
         }
 
-        document.getElementById("section-" + openID).style.display = "block";
+        section.style.display = "block";
 
         setTimeout(function(){
-            document.getElementById("section-" + openID).style.opacity = 1;
+            section.style.opacity = 1;
         }, 100);
     }, 100);
 }

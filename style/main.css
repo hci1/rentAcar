@@ -11,7 +11,7 @@ h2{
     background: center/2px url(../media/style/blue-square.svg) repeat-x;
     text-align: center;
 }
-h2 span{
+h2 a{
     padding: 0 10px;
     background: url(../media/style/white-square.svg);
 }
@@ -36,7 +36,7 @@ a{
     text-decoration: none;
     cursor: pointer;
 }
-nav{
+nav, div.options{
     display: none;
     text-align: center;
     width: 600px;
