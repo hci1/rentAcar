@@ -8,7 +8,7 @@ h1 img{
     display: block;
 }
 h2{
-    background: center/2px url(../media/style/blue-square.svg) repeat-x;
+    background: center/3px url(../media/style/blue-square.svg) repeat-x;
     text-align: center;
 }
 h2 a, h2 span{
@@ -40,7 +40,8 @@ input{
     color: #545454;
     transition: .5s;
     background: transparent
-}input:focus{
+}
+input:focus{
     color: #000;
     border-color: #01a7e1;
 }
@@ -50,7 +51,7 @@ input{
     text-align: left;
 }
 hr{
-    border: solid 1px #01a7e1;
+    border: solid 3px #01a7e1;
     width: 700px;
 }
 a{
@@ -60,13 +61,29 @@ a{
 }
 div.options{
     transition: .1s;
+    height: 158px;
 }
 nav, div.options{
     display: none;
     text-align: center;
     width: 600px;
     margin: 20px auto;
-}nav.four_items{
+}
+div.options a{
+    float: left;
+    padding: 4px 12px;
+    margin: 0 4px;
+    transition: .5s;
+    border: solid 4px transparent;
+}
+div.options img{
+    width: 100px;
+    height: 100px;
+}
+div.options a.selected{
+    border-color: #01a7e1;
+}
+nav.four_items{
     width: 500px;
 }
 nav a{
@@ -112,8 +129,8 @@ section{
     float: right;
     background: 0/25px url(../media/style/grey-triangle-left.svg) no-repeat;
 }
-#navilinks a#forth{
-    background-image: url(../media/style/grey-triangle-right.svg);
+#forth{
+    background-image: url(../media/style/grey-triangle-right.svg) !important;
 }
 #section-start a{
     display: block;

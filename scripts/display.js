@@ -160,6 +160,30 @@ function choose(tourType){
     document.getElementById("navilinks").style.display = "block";
 }
 
+function select(optionID){
+    var option = document.getElementById(optionID);
+
+    if(option.className === "selected"){
+        option.className = "";
+
+        // TODO: do un-selecting stuff
+    }else{
+        if(option.parentNode.className.split(" ").indexOf("single") !== -1){
+            var children = option.parentNode.getElementsByTagName("a");
+
+            for(var i = 0; i < children.length; i++){
+                children[i].className = "";
+
+                // TODO: do un-seleting stuff for choices with only one option
+            }
+        }
+
+        option.className = "selected";
+
+        // TODO: do selecting stuff
+    }
+}
+
 function displayTime() {
     var date = new Date();
     var hour = "0"  + date.getHours();

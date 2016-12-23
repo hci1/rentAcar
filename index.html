@@ -10,7 +10,7 @@
         <span id="time"></span>
     </header>
 
-    <h1><a href="index.html"><img src="media/logo.png" alt="rentAcar"></a></h1>
+    <h1><a onclick="display('start')"><img src="media/logo.png" alt="rentAcar"></a></h1>
     <hr>
 
     <main>
@@ -42,30 +42,57 @@
     <main class="car_rental">
         <section id="section-car">
             <h2><a class="options" onclick="show(this)">Typ</a></h2>
-            <div class="options">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </div>
+            <div class="options single">
+                <a onclick="select(this.id)" id="type-1"><img src="media/options/car.png" alt=""/><br><p>PKW </p></a>
+                <a onclick="select(this.id)" id="type-2"><img src="media/options/transporter.png" alt=""/><br><p>Transporter </p></a>
+                <a onclick="select(this.id)" id="type-3"><img src="media/options/bus.png" alt=""/><br><p>Bus </p></a>
+                <a onclick="select(this.id)" id="type-4"><img src="media/options/truck.png" alt=""/><br><p>LKW </p></a>
+            </div>
 
             <h2><a class="options" onclick="show(this)">Auto</a></h2>
-            <div class="options">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </div>
+            <div class="options single">
+                <a onclick="select(this.id)" id="car-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Auto 1 </p></a>
+                <a onclick="select(this.id)" id="car-2"><img src="media/options/placeholder.svg" alt=""/><br><p>Auto 2 </p></a>
+                <a onclick="select(this.id)" id="car-3"><img src="media/options/placeholder.svg" alt=""/><br><p>Auto 3 </p></a>
+                <a onclick="select(this.id)" id="car-4"><img src="media/options/placeholder.svg" alt=""/><br><p>Auto 4 </p></a>
+            </div>
         </section>
 
         <section id="section-interior">
             <h2><a class="options" onclick="show(this)">Innenraum</a></h2>
-            <div class="options">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+            <div class="options multi">
+                <a onclick="select(this.id)" id="interior-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Innenraum 1 </p></a>
+                <a onclick="select(this.id)" id="interior-2"><img src="media/options/placeholder.svg" alt=""/><br><p>Innenraum 2 </p></a>
+                <a onclick="select(this.id)" id="interior-3"><img src="media/options/placeholder.svg" alt=""/><br><p>Innenraum 3 </p></a>
+                <a onclick="select(this.id)" id="interior-4"><img src="media/options/placeholder.svg" alt=""/><br><p>Innenraum 4 </p></a>
+            </div>
         </section>
 
         <section id="section-seat">
             <h2><a class="options" onclick="show(this)">Extras</a></h2>
-            <div class="options">Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. </div>
+            <div class="options multi">
+                <a onclick="select(this.id)" id="extra-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Extra 1 </p></a>
+                <a onclick="select(this.id)" id="extra-2"><img src="media/options/placeholder.svg" alt=""/><br><p>Extra 2 </p></a>
+                <a onclick="select(this.id)" id="extra-3"><img src="media/options/placeholder.svg" alt=""/><br><p>Extra 3 </p></a>
+                <a onclick="select(this.id)" id="extra-4"><img src="media/options/placeholder.svg" alt=""/><br><p>Extra 4 </p></a>
+            </div>
         </section>
 
         <section id="section-calendar">
             <h2><a class="options" onclick="show(this)">Fahrt</a></h2>
-            <div class="options">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </div>
+            <div class="options">
+                Datepicker
+            </div>
         </section>
 
         <section id="section-payment">
             <h2><a class="options" onclick="show(this)">Zahlung</a></h2>
-            <div class="options">Magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore. </div>
+            <div class="options single">
+                <a onclick="select(this.id)" id="payment-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Zahlung 1 </p></a>
+                <a onclick="select(this.id)" id="payment-2"><img src="media/options/placeholder.svg" alt=""/><br><p>Zahlung 2 </p></a>
+                <a onclick="select(this.id)" id="payment-3"><img src="media/options/placeholder.svg" alt=""/><br><p>Zahlung 3 </p></a>
+                <a onclick="select(this.id)" id="payment-4"><img src="media/options/placeholder.svg" alt=""/><br><p>Zahlung 4 </p></a>
+            </div>
         </section>
     </main>
 
@@ -79,34 +106,70 @@
     <main class="tourism">
         <section id="section-city">
             <h2><a class="options" onclick="show(this)">Stadt</a></h2>
-            <div class="options">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. </div>
+            <div class="options single">
+                <a onclick="select(this.id)" id="city-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Stadt 1 </p></a>
+                <a onclick="select(this.id)" id="city-2"><img src="media/options/placeholder.svg" alt=""/><br><p>Stadt 2 </p></a>
+                <a onclick="select(this.id)" id="city-3"><img src="media/options/placeholder.svg" alt=""/><br><p>Stadt 3 </p></a>
+                <a onclick="select(this.id)" id="city-4"><img src="media/options/placeholder.svg" alt=""/><br><p>Stadt 4 </p></a>
+            </div>
         </section>
 
         <section id="section-sights">
             <h2><a class="options" onclick="show(this)">Sehenswürdigkeiten</a></h2>
-            <div class="options">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</div>
+            <div class="options single">
+                <a onclick="select(this.id)" id="sight-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Sehenswürdigkeit 1 </p></a>
+                <a onclick="select(this.id)" id="sight-2"><img src="media/options/placeholder.svg" alt=""/><br><p>Sehenswürdigkeit 2 </p></a>
+                <a onclick="select(this.id)" id="sight-3"><img src="media/options/placeholder.svg" alt=""/><br><p>Sehenswürdigkeit 3 </p></a>
+                <a onclick="select(this.id)" id="sight-4"><img src="media/options/placeholder.svg" alt=""/><br><p>Sehenswürdigkeit 4 </p></a>
+            </div>
         </section>
 
         <section id="section-details">
             <h2><a class="options" onclick="show(this)">Typ</a></h2>
-            <div class="options">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </div>
+            <div class="options single">
+                <a onclick="select(this.id)" id="tourism-type-1"><img src="media/options/car.png" alt=""/><br><p>PKW </p></a>
+                <a onclick="select(this.id)" id="tourism-type-2"><img src="media/options/transporter.png" alt=""/><br><p>Transporter </p></a>
+                <a onclick="select(this.id)" id="tourism-type-3"><img src="media/options/bus.png" alt=""/><br><p>Bus </p></a>
+                <a onclick="select(this.id)" id="tourism-type-4"><img src="media/options/truck.png" alt=""/><br><p>LKW </p></a>
+            </div>
 
             <h2><a class="options" onclick="show(this)">Auto</a></h2>
-            <div class="options">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </div>
+            <div class="options single">
+                <a onclick="select(this.id)" id="tourism-car-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Auto 1 </p></a>
+                <a onclick="select(this.id)" id="tourism-car-2"><img src="media/options/placeholder.svg" alt=""/><br><p>Auto 2 </p></a>
+                <a onclick="select(this.id)" id="tourism-car-3"><img src="media/options/placeholder.svg" alt=""/><br><p>Auto 3 </p></a>
+                <a onclick="select(this.id)" id="tourism-car-4"><img src="media/options/placeholder.svg" alt=""/><br><p>Auto 4 </p></a>
+            </div>
 
             <h2><a class="options" onclick="show(this)">Innenraum</a></h2>
-            <div class="options">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </div>
+            <div class="options multi">
+                <a onclick="select(this.id)" id="tourism-interior-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Innenraum 1 </p></a>
+                <a onclick="select(this.id)" id="tourism-interior-2"><img src="media/options/placeholder.svg" alt=""/><br><p>Innenraum 2 </p></a>
+                <a onclick="select(this.id)" id="tourism-interior-3"><img src="media/options/placeholder.svg" alt=""/><br><p>Innenraum 3 </p></a>
+                <a onclick="select(this.id)" id="tourism-interior-4"><img src="media/options/placeholder.svg" alt=""/><br><p>Innenraum 4 </p></a>
+            </div>
 
             <h2><a class="options" onclick="show(this)">Extras</a></h2>
-            <div class="options">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </div>
-
+            <div class="options multi">
+                <a onclick="select(this.id)" id="tourism-extra-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Extra 1 </p></a>
+                <a onclick="select(this.id)" id="tourism-extra-2"><img src="media/options/placeholder.svg" alt=""/><br><p>Extra 2 </p></a>
+                <a onclick="select(this.id)" id="tourism-extra-3"><img src="media/options/placeholder.svg" alt=""/><br><p>Extra 3 </p></a>
+                <a onclick="select(this.id)" id="tourism-extra-4"><img src="media/options/placeholder.svg" alt=""/><br><p>Extra 4 </p></a>
+            </div>
             <h2><a class="options" onclick="show(this)">Fahrt</a></h2>
-            <div class="options">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </div>
+            <div class="options">
+                Datepicker
+            </div>
         </section>
 
         <section id="section-pay">
             <h2><a class="options" onclick="show(this)">Zahlung</a></h2>
-            <div class="options">Magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore. </div>
+            <div class="options single">
+                <a onclick="select(this.id)" id="tourism-payment-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Zahlung 1 </p></a>
+                <a onclick="select(this.id)" id="tourism-payment-2"><img src="media/options/placeholder.svg" alt=""/><br><p>Zahlung 2 </p></a>
+                <a onclick="select(this.id)" id="tourism-payment-3"><img src="media/options/placeholder.svg" alt=""/><br><p>Zahlung 3 </p></a>
+                <a onclick="select(this.id)" id="tourism-payment-4"><img src="media/options/placeholder.svg" alt=""/><br><p>Zahlung 4 </p></a>
+            </div>
         </section>
     </main>
 
