@@ -59,6 +59,9 @@ function display(openID){
             document.getElementById("navilinks").style.display = "none";
         }
 
+        document.getElementById("thanks").style.opacity = 0;
+        document.getElementById("loader").style.opacity = 1;
+
         if(openID === "success"){
             setTimeout(function(){
                 document.getElementById("thanks").style.opacity = 1;
@@ -158,6 +161,16 @@ function choose(tourType){
     display(items[1].getElementsByTagName("section")[0].id.split("-")[1]);
 
     document.getElementById("navilinks").style.display = "block";
+}
+
+function currentTime(fieldID){
+    var offsetInMilliseconds = (new Date()).getTimezoneOffset() * 60000;
+    var time = new Date(Date.now() - offsetInMilliseconds).toISOString().slice(0, -8);
+    document.getElementById(fieldID).value = time;
+}
+
+function myLocation(fieldID){
+    document.getElementById(fieldID).value = "Appelstraße 4, 30167 Hannover";
 }
 
 function select(optionID){

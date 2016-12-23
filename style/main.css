@@ -31,15 +31,22 @@ header{
 }
 form{
     text-align: right;
-    width: 400px;
+    width: 440px;
     margin: 0 auto;
 }
 input{
     border: thin solid;
+    width: 200px;
+    height: 20px;
     padding: 5px;
     color: #545454;
     transition: .5s;
-    background: transparent
+    background: transparent;
+    outline: none;
+}
+input[type="button"]{
+    width: 110px;
+    height: 32px;
 }
 input:focus{
     color: #000;

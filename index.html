@@ -22,10 +22,10 @@
         <section id="section-login">
             <h2><span>Anmelden</span></h2>
 
-            <form action="#">
+            <form>
                 <p>Benutzername: <input id="username" type="text"></p>
                 <p>Kennwort: <input id="password" type="password"/></p>
-                <p><input type="submit" value="Anmelden" onclick="userStatus(login)"></p>
+                <p><input type="button" value="Anmelden" onclick="userStatus(login)"></p>
                 <p id="login_error"></p>
             </form>
         </section>
@@ -81,7 +81,20 @@
         <section id="section-calendar">
             <h2><a class="options" onclick="show(this)">Fahrt</a></h2>
             <div class="options">
-                Datepicker
+                <form>
+                    <p>Abfahrtszeit:
+                            <input type="datetime-local" id="startdate"/>
+                            <input type="button" value="Jetzt" onclick="currentTime('startdate')"/>
+                    </p>
+                    <p>Abfahrtsort:
+                            <input type="text" id="startcity"/>
+                            <input type="button" value="Mein Standort" onclick="myLocation('startcity')"/>
+                    </p>
+                    <p>Ankunftsort:
+                            <input type="text" id="endcity"/>
+                            <input type="button" value="Mein Standort" onclick="myLocation('endcity')"/>
+                    </p>
+                </form>
             </div>
         </section>
 
@@ -117,10 +130,10 @@
         <section id="section-sights">
             <h2><a class="options" onclick="show(this)">Sehenswürdigkeiten</a></h2>
             <div class="options single">
-                <a onclick="select(this.id)" id="sight-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Sehenswürdigkeit 1 </p></a>
-                <a onclick="select(this.id)" id="sight-2"><img src="media/options/placeholder.svg" alt=""/><br><p>Sehenswürdigkeit 2 </p></a>
-                <a onclick="select(this.id)" id="sight-3"><img src="media/options/placeholder.svg" alt=""/><br><p>Sehenswürdigkeit 3 </p></a>
-                <a onclick="select(this.id)" id="sight-4"><img src="media/options/placeholder.svg" alt=""/><br><p>Sehenswürdigkeit 4 </p></a>
+                <a onclick="select(this.id)" id="sight-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Gebäude 1 </p></a>
+                <a onclick="select(this.id)" id="sight-2"><img src="media/options/placeholder.svg" alt=""/><br><p>Gebäude 2 </p></a>
+                <a onclick="select(this.id)" id="sight-3"><img src="media/options/placeholder.svg" alt=""/><br><p>Gebäude 3 </p></a>
+                <a onclick="select(this.id)" id="sight-4"><img src="media/options/placeholder.svg" alt=""/><br><p>Gebäude 4 </p></a>
             </div>
         </section>
 
@@ -158,7 +171,20 @@
             </div>
             <h2><a class="options" onclick="show(this)">Fahrt</a></h2>
             <div class="options">
-                Datepicker
+                <form>
+                    <p>Abfahrtszeit:
+                            <input type="datetime-local" id="tourism-startdate"/>
+                            <input type="button" value="Jetzt" onclick="currentTime('tourism-startdate')"/>
+                    </p>
+                    <p>Abfahrtsort:
+                            <input type="text" id="tourism-startcity"/>
+                            <input type="button" value="Mein Standort" onclick="myLocation('tourism-startcity')"/>
+                    </p>
+                    <p>Ankunftsort:
+                            <input type="text" id="tourism-endcity"/>
+                            <input type="button" value="Mein Standort" onclick="myLocation('tourism-endcity')"/>
+                    </p>
+                </form>
             </div>
         </section>
 
