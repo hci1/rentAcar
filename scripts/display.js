@@ -47,21 +47,33 @@ function show(optionsHeader){
 }
 
 function display(openID){
+    console.log("Opening: " + openID);
+
+    //get all correxsponding elements from the DOM structure here
     var sections = document.getElementsByTagName("section");
     var navs = document.getElementsByTagName("nav");
-    var neighbors = getNeighbors(openID);
     var options = document.getElementsByClassName("options");
 
+    //retrieve the neighbours of this section
+    var neighbors = getNeighbors(openID);
+
+    var i;
+
+    //if openID is either start, success or openID do the following:
     if (["start", "success", "login"].indexOf(openID) !== -1){
         if(openID === "login"){
             document.getElementById("navilinks").style.display = "block";
         }else{
+            //in this case, we want to hide the whole navigation element since
+            //we are on page "start" or "success"
             document.getElementById("navilinks").style.display = "none";
         }
 
+        //start the loading animation
         document.getElementById("thanks").style.opacity = 0;
         document.getElementById("loader").style.opacity = 1;
 
+        //simulate a loading animation for 1000ms
         if(openID === "success"){
             setTimeout(function(){
                 document.getElementById("thanks").style.opacity = 1;
@@ -69,26 +81,31 @@ function display(openID){
             }, 1000);
         }
 
-        for(var i = 0; i < navs.length; i++){
+        //make all navigation elements invisible
+        for(i = 0; i < navs.length; i++){
             navs[i].style.display = "none";
         }
     }
 
+
+    //if the predeccessor is available, enable the back button, disable it otherwise
     if(neighbors[0] !== ""){
-        document.getElementById("back").onclick = function(){display(neighbors[0])};
+        document.getElementById("back").onclick = function(){display(neighbors[0]);};
         document.getElementById("back").style.opacity = 1;
     }else{
         document.getElementById("back").style.opacity = 0;
     }
 
+    //if thefollow up ID is available, enable the next button, disable it otherwise
     if(neighbors[1] !== ""){
-        document.getElementById("forth").onclick = function(){display(neighbors[1])};
+        document.getElementById("forth").onclick = function(){display(neighbors[1]);};
         document.getElementById("forth").style.opacity = 1;
     }else{
         document.getElementById("forth").style.opacity = 0;
     }
 
-    for(var i = 0; i < navs.length; i++){
+    //set a grey circle for all options not visited yet
+    for(i = 0; i < navs.length; i++){
         var links = navs[i].getElementsByTagName("a");
 
         var classes = "";
@@ -102,7 +119,8 @@ function display(openID){
         }
     }
 
-    for(var i = 1; i < options.length; i+=2){
+    //make invisible all options
+    for(i = 1; i < options.length; i+=2){
         options[i].style.opacity = 0;
         options[i].style.display = "none";
     }
@@ -110,12 +128,13 @@ function display(openID){
     var section = document.getElementById("section-" + openID);
     var firstOption = section.getElementsByTagName("div")[0];
 
+    //make visible the first option
     if (firstOption !== undefined){
         firstOption.style.display = "block";
         firstOption.style.opacity = 1;
     }
 
-    for(var i = 0; i < sections.length; i++){
+    for(i = 0; i < sections.length; i++){
         sections[i].style.opacity = 0;
     }
 
@@ -132,19 +151,25 @@ function display(openID){
     }, 100);
 }
 
+//return all neighbours of this ID
 function getNeighbors(id){
+    //neighbours are in correct order in the html document
+    //we may therefore just retrieve them by index
     var neighbors = [];
-    var index
+    var index;
 
     sections.forEach(function(section){
         if ((index = section.indexOf(id)) !== -1){
             if(index === 0){
+                //special case: there is no neighbour prior to the start ID
                 neighbors.push("start");
                 neighbors.push(section[index+1]);
             }else if(index === section.length-1){
+                //special case: there is no neighbour after the successs ID
                 neighbors.push(section[index-1]);
                 neighbors.push("success");
             }else{
+                //default: add pre section and following section to the return array
                 neighbors.push(section[index-1]);
                 neighbors.push(section[index+1]);
             }
@@ -208,4 +233,4 @@ window.onload = function() {
     displayTime();
     setInterval(displayTime, 60000);
     display("start");
-}
+};
