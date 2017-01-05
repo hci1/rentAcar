@@ -204,7 +204,8 @@ function select(optionID){
     if(option.className === "selected"){
         option.className = "";
 
-        // TODO: do un-selecting stuff
+        //calls selectOption(...) in database.js
+        deselectOption(optionID);
     }else{
         if(option.parentNode.className.split(" ").indexOf("single") !== -1){
             var children = option.parentNode.getElementsByTagName("a");
@@ -212,13 +213,15 @@ function select(optionID){
             for(var i = 0; i < children.length; i++){
                 children[i].className = "";
 
-                // TODO: do un-seleting stuff for choices with only one option
+                //calls selectOption(...) in database.js
+                deselectOption(optionID);
             }
         }
 
         option.className = "selected";
 
-        // TODO: do selecting stuff
+        //calls selectOption(...) in database.js
+        selectOption(optionID);
     }
 }
 
