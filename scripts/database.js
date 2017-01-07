@@ -19,24 +19,32 @@ request.onreadystatechange = function() {
 	var OK = 200;
 	var NOT_FOUND = 404;
 
+	var message;
+
 	if (request.readyState == DONE) {
 		if (request.status == OK) {
 			var response = JSON.parse(request.responseText);
-      put(response, values[response._id]);
+			message = {};
+			message[response._id] = values[response._id];
+      put(response, message);
 		}
 		if (request.status == NOT_FOUND) {
 			var json = JSON.parse(request.responseText);
+			console.log("Reason: "+json.reason);
 			if (json.reason === "no_db_file" || json.reason === "Database does not exist.") {
 				createDB();
 			} else {
 				var url = request.responseURL;
-				// console.log(typeof(url));
+				console.log("Putting to URL: "+url);
 				var i = url.lastIndexOf("/", url.length - 1);
 				var name = url.substring(i + 1);
-        put({ "_id" : name }, values[name]);
+				message = {};
+				message[name] = values[name];
+        put({ "_id" : name }, message);
 			}
 		}
 	}
+	console.log("###################################");
 };
 
 function createDB() {
@@ -45,6 +53,8 @@ function createDB() {
 }
 
 function put(response, message) {
+	console.log("In put(): URL: "+dburl + response._id);
+
 	request.open("PUT", dburl + response._id, false);
 	request.setRequestHeader("Content-type", "application/json");
 	message._id = response._id;
@@ -52,6 +62,8 @@ function put(response, message) {
 		message._rev = response._rev;
 	}
 	var s = JSON.stringify(message);
+	console.log("In put(): send: "+s);
+	console.log("In put(): message was: "+message);
 	request.send(s);
 }
 
@@ -164,9 +176,9 @@ function deselectOption(optionID){
 function removeElement(array, element){
   var newArray = [];
 
-    for(var e in array){
-      if(e!==element){
-        newArray.push(e);
+    for(i = 0; i <  array.length ; i++){
+      if(array[i]!==element){
+        newArray.push(array[i]);
       }
     }
     return newArray;
