@@ -32,6 +32,7 @@
         </section>
     </main>
 
+    <!-- NavigationBar -->
     <nav class="car_rental five_items">
         <a id="link-car" onclick="display('car')" title="Auto"><img src="media/status/car.png"></a>
         <a id="link-interior" onclick="display('interior')" title="Innenraum" class="future"><img src="media/status/interior.png"></a>
@@ -40,14 +41,16 @@
         <a id="link-payment" onclick="display('payment')" title="Bezahlen" class="future"><img src="media/status/payment.png"></a>
     </nav>
 
+    <!-- init views for the default case -->
     <main class="car_rental">
+        <!-- choose the car type and actual car -->
         <section id="section-car">
             <h2><a class="options" onclick="show(this)">Typ</a></h2>
             <div class="options single">
-                <a onclick="select(this.id)" id="type-1"><img src="media/options/car.png" alt=""/><br><p>PKW </p></a>
-                <a onclick="select(this.id)" id="type-2"><img src="media/options/transporter.png" alt=""/><br><p>Transporter </p></a>
-                <a onclick="select(this.id)" id="type-3"><img src="media/options/bus.png" alt=""/><br><p>Bus </p></a>
-                <a onclick="select(this.id)" id="type-4"><img src="media/options/truck.png" alt=""/><br><p>LKW </p></a>
+                <a onclick="select(this.id)" id="type-car"><img src="media/options/type-car.png" alt=""/><br><p>PKW </p></a>
+                <a onclick="select(this.id)" id="type-transporter"><img src="media/options/type-transporter.png" alt=""/><br><p>Transporter </p></a>
+                <a onclick="select(this.id)" id="type-bus"><img src="media/options/type-bus.png" alt=""/><br><p>Bus </p></a>
+                <a onclick="select(this.id)" id="type-truck"><img src="media/options/type-truck.png" alt=""/><br><p>LKW </p></a>
             </div>
 
             <h2><a class="options" onclick="show(this)">Auto</a></h2>
@@ -59,6 +62,7 @@
             </div>
         </section>
 
+        <!-- choose car interior -->
         <section id="section-interior">
             <h2><a class="options" onclick="show(this)">Innenraum</a></h2>
             <div class="options multi">
@@ -69,6 +73,7 @@
             </div>
         </section>
 
+        <!-- choose the extras -->
         <section id="section-seat">
             <h2><a class="options" onclick="show(this)">Extras</a></h2>
             <div class="options multi">
@@ -79,27 +84,39 @@
             </div>
         </section>
 
+        <!-- choose the start and enddate as well as the place -->
         <section id="section-calendar">
             <h2><a class="options" onclick="show(this)">Fahrt</a></h2>
             <div class="options">
                 <form>
                     <p>Abfahrtszeit:
-                            <input type="datetime-local" id="startdate"/>
+                            <input type="datetime-local" onkeydown="saveStartDate(this.value); return false;" id="startdate"/>
                             <input type="button" value="Jetzt" onclick="currentTime('startdate')"/>
                     </p>
                     <p>Abfahrtsort:
-                            <input type="text" id="startcity"/>
+                            <input type="text" onkeydown="saveStartCity(this.value); return false;" id="startcity"/>
                             <input type="button" value="Mein Standort" onclick="myLocation('startcity')"/>
                     </p>
                     <p>Ankunftsort:
-                            <input type="text" id="endcity"/>
+                            <input type="text" onkeydown="saveEndCity(this.value); return false;" id="endcity"/>
                             <input type="button" value="Mein Standort" onclick="myLocation('endcity')"/>
                     </p>
                 </form>
             </div>
         </section>
 
+        <!-- all payment options and an overview go here -->
         <section id="section-payment">
+            <h2><a class="options" onclick="show(this)">Übersicht</a></h2>
+            <div class="options">
+              <h3>Bitte prüfen sie ihre Auswahl:</h3>
+              <!-- here go all chose options -->
+              <p id="chosencar-descr">Auto</p>
+              <p id="choseninterior-descr">Innenraum</p>
+              <p id="chosenextra-descr">Extras</p>
+              <p id="chosenstart-descr">Start:</p>
+              <p id="chosenend-descr">Zielort:</p>
+            </div>
             <h2><a class="options" onclick="show(this)">Zahlung</a></h2>
             <div class="options single">
                 <a onclick="select(this.id)" id="payment-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Zahlung 1 </p></a>
@@ -130,7 +147,7 @@
 
         <section id="section-sights">
             <h2><a class="options" onclick="show(this)">Sehenswürdigkeiten</a></h2>
-            <div class="options single">
+            <div class="options multi">
                 <a onclick="select(this.id)" id="sight-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Gebäude 1 </p></a>
                 <a onclick="select(this.id)" id="sight-2"><img src="media/options/placeholder.svg" alt=""/><br><p>Gebäude 2 </p></a>
                 <a onclick="select(this.id)" id="sight-3"><img src="media/options/placeholder.svg" alt=""/><br><p>Gebäude 3 </p></a>
@@ -141,10 +158,10 @@
         <section id="section-details">
             <h2><a class="options" onclick="show(this)">Typ</a></h2>
             <div class="options single">
-                <a onclick="select(this.id)" id="tourism-type-1"><img src="media/options/car.png" alt=""/><br><p>PKW </p></a>
-                <a onclick="select(this.id)" id="tourism-type-2"><img src="media/options/transporter.png" alt=""/><br><p>Transporter </p></a>
-                <a onclick="select(this.id)" id="tourism-type-3"><img src="media/options/bus.png" alt=""/><br><p>Bus </p></a>
-                <a onclick="select(this.id)" id="tourism-type-4"><img src="media/options/truck.png" alt=""/><br><p>LKW </p></a>
+                <a onclick="select(this.id)" id="tourism-type-car"><img src="media/options/tourism-type-car.png" alt=""/><br><p>PKW </p></a>
+                <a onclick="select(this.id)" id="tourism-type-transporter"><img src="media/options/tourism-type-transporter.png" alt=""/><br><p>Transporter </p></a>
+                <a onclick="select(this.id)" id="tourism-type-bus"><img src="media/options/tourism-type-bus.png" alt=""/><br><p>Bus </p></a>
+                <a onclick="select(this.id)" id="tourism-type-truck"><img src="media/options/tourism-type-truck.png" alt=""/><br><p>LKW </p></a>
             </div>
 
             <h2><a class="options" onclick="show(this)">Auto</a></h2>
@@ -172,18 +189,18 @@
             </div>
             <h2><a class="options" onclick="show(this)">Fahrt</a></h2>
             <div class="options">
-                <form>
+                <form onsubmit="saveStartDate(); saveStartCity(); saveEndCity();">
                     <p>Abfahrtszeit:
-                            <input type="datetime-local" id="tourism-startdate"/>
-                            <input type="button" value="Jetzt" onclick="currentTime('tourism-startdate')"/>
+                        <input type="datetime-local" onkeydown="saveStartDate(this.value); return false;" id="tourism-startdate"/>
+                        <input type="button" value="Jetzt" onclick="currentTime('tourism-startdate')"/>
                     </p>
                     <p>Abfahrtsort:
-                            <input type="text" id="tourism-startcity"/>
-                            <input type="button" value="Mein Standort" onclick="myLocation('tourism-startcity')"/>
+                        <input type="text" onkeydown="saveStartCity(this.value); return false;" id="tourism-startcity"/>
+                        <input type="button" value="Mein Standort" onclick="myLocation('tourism-startcity')"/>
                     </p>
                     <p>Ankunftsort:
-                            <input type="text" id="tourism-endcity"/>
-                            <input type="button" value="Mein Standort" onclick="myLocation('tourism-endcity')"/>
+                        <input type="text" onkeydown="saveEndCity(this.value); return false;" id="tourism-endcity"/>
+                        <input type="button" value="Mein Standort" onclick="myLocation('tourism-endcity')"/>
                     </p>
                 </form>
             </div>

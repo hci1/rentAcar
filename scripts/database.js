@@ -90,24 +90,41 @@ var dburl = "http://localhost:5984/" + dbname + "/";
 
 //all save functions retrieve their values from the html document by getting the
 //inputs via ID
-function saveUsername(){
-  values.username = document.getElementById("username").value;
-  set("username");
+function saveUsername(name){
+	if(name){
+			values.username = name;
+	}else {
+		values.username = document.getElementById("username").value;
+  }
+
+	set("username");
 }
 
-function saveStartDate(){
-  values.startDate = document.getElementById("tourism-startdate").value;
-  set("startDate");
+function saveStartDate(date){
+	if(date)
+		values.startDate = date;
+	else
+		values.startDate = document.getElementById("startdate").value;
+
+	set("startDate");
 }
 
-function saveStartCity(){
-  values.startDate = document.getElementById("tourism-startcity").value;
-  set("startCity");
+function saveStartCity(city){
+	if(city)
+		values.startCity = city;
+	else
+		values.startCity = document.getElementById("startcity").value;
+
+	set("startCity");
 }
 
-function saveEndCity(response){
-  values.startDate = document.getElementById("tourism-endcity").value;
-  set("endCity");
+function saveEndCity(city){
+	if(city)
+		values.endCity = city;
+	else
+		values.endCity = document.getElementById("endcity").value;
+
+	set("endCity");
 }
 
 //selectOption is called from display.js and automatically sets (possibly adds) and saves the chosen option

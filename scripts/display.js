@@ -7,6 +7,7 @@ function userStatus(type){
         var error = document.getElementById("login_error");
 
         if(username.value !== "" && password.value !== ""){
+            saveUsername();
             display("start");
             message.innerHTML = "Hallo, " + username.value +
                     "! (<a onclick='userStatus(logout)'>Abmelden</a>)";
@@ -25,17 +26,27 @@ function userStatus(type){
 }
 
 function show(optionsHeader){
+    console.log("Optionsheader: "+optionsHeader);
     var options = document.getElementsByClassName("options");
-    var index = [].indexOf.call(options, optionsHeader);
+    var index = Array.prototype.indexOf.call(options, optionsHeader);
+    var i;
+
     var option = options[index + 1];
 
-    for(var i = 1; i < options.length; i+=2){
-        options[i].style.opacity = 0;
+    // make invisible
+    for(i = 1; i < options.length; i++){
+        if(options[i].tagName.toLowerCase() === "div")
+            options[i].style.opacity = 0;
     }
 
     setTimeout(function(){
-        for(var i = 1; i < options.length; i+=2){
-            options[i].style.display = "none";
+        // for(var i = 1; i < options.length; i+=2){
+        //     options[i].style.display = "none";
+        // }
+
+        for(i = 1; i < options.length; i++){
+            if(options[i].tagName.toLowerCase() === "div")
+                options[i].style.display = "none";
         }
 
         option.style.display = "block";
@@ -48,6 +59,9 @@ function show(optionsHeader){
 
 function display(openID){
     console.log("Opening: " + openID);
+
+    if(openID === "payment")
+      updatePayment();
 
     //get all correxsponding elements from the DOM structure here
     var sections = document.getElementsByTagName("section");
@@ -132,6 +146,11 @@ function display(openID){
     if (firstOption !== undefined){
         firstOption.style.display = "block";
         firstOption.style.opacity = 1;
+
+        for(i=0; i < firstOption.children.length; i++){
+          firstOption.children[i].display = "block";
+          firstOption.children[i].opacity = 1;
+        }
     }
 
     for(i = 0; i < sections.length; i++){
@@ -149,6 +168,41 @@ function display(openID){
             section.style.opacity = 1;
         }, 100);
     }, 100);
+}
+
+// this will update the payment sectionand is called from show(...) before opending the tab
+function updatePayment(){
+    var curImage, curDescr;
+
+    curDescr = document.getElementById("chosencar-descr");
+    curDescr.innerHTML = "Auto: "+values.car.slice(values.car.indexOf('-')+1);
+
+    curDescr = document.getElementById("choseninterior-descr");
+    curDescr.innerHTML = "Innenraum: <ul>";
+    for(i=0; i<values.interior.length;i++)
+    {
+        curDescr.innerHTML += "<li>"+values.interior[i].slice(values.interior[i].indexOf('-')+1)+"</li>";
+    }
+    curDescr.innerHTML += "</li>";
+
+    curDescr = document.getElementById("chosenextra-descr");
+    curDescr.innerHTML = "Extras: <ul>";
+    for(i=0; i<values.extra.length;i++)
+    {
+        curDescr.innerHTML += "<li>"+values.extra[i].slice(values.extra[i].indexOf('-')+1)+"</li>";
+    }
+    curDescr.innerHTML += "</li>";
+
+    curDescr = document.getElementById("chosenstart-descr");
+    curDescr.innerHTML = "Start: "+values.startDate+" ab "+values.startCity;
+
+    curDescr = document.getElementById("chosenend-descr");
+    curDescr.innerHTML = "Ziel: "+values.endCity;
+
+}
+
+function updatePay(){
+
 }
 
 //return all neighbours of this ID

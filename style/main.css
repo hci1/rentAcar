@@ -16,7 +16,7 @@ h2 a, h2 span{
     background: url(../media/style/white-square.svg);
 }
 h3{
-    opacity: 0;
+    opacity: 1;
     transition: 1s;
     text-align: center;
 }
@@ -100,7 +100,7 @@ nav a{
     padding: 10px 0px 10px 96px;
     line-height: 12px;
     font-size: 16px;
-    background: right/40px url(../media/style/blue-circle.svg) no-repeat, 
+    background: right/40px url(../media/style/blue-circle.svg) no-repeat,
                 0 url(../media/style/blue-line.svg) repeat-x;
 }
 nav a img{
