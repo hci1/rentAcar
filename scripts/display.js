@@ -326,6 +326,95 @@ function select(optionID){
     }
 }
 
+function change(optionID){
+    if(optionID === "type-car"){
+                document.getElementById("car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="car-1"><img src="media/options/cars/road-1762473_1920.jpg" alt=""/><br><p>Mercedes </p></a>\
+                            <a onclick="select(this.id)" id="car-2"><img src="media/options/cars/mercedes-1782740_1280.jpg" alt=""/><br><p>Mercedes SUV </p></a>\
+                            <a onclick="select(this.id)" id="car-3"><img src="media/options/cars/range-rover-1806931_1920.jpg" alt=""/><br><p>Range Rover </p></a>\
+                            <a onclick="select(this.id)" id="car-4"><img src="media/options/cars/sports-car-1349147_1920.jpg" alt=""/><br><p>BMW Cabrio </p></a>';
+        }
+    if(optionID === "type-transporter"){
+                document.getElementById("car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="car-1"><img src="media/options/cars/2014_Renault_Trafic_L2_H1_-_Fl.jpg" alt=""/><br><p>Renault Trafic </p></a>\
+                            <a onclick="select(this.id)" id="car-2"><img src="media/options/cars/renault-Kangoovan-F61-ph2-overview-Design.jpg.ximg.l_full_m.smart.jpg" alt=""/><br><p>Renault Kangoo </p></a>\
+                            <a onclick="select(this.id)" id="car-3"><img src="media/options/cars/renault-master-1024x768-1.jpg" alt=""/><br><p>Renault Master </p></a>\
+                            <a onclick="select(this.id)" id="car-4"><img src="media/options/cars/volkswagen-crafter-2010-models-39255.jpg" alt=""/><br><p>VW Crafter </p></a>';
+        }
+    if(optionID === "type-bus"){
+                document.getElementById("car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="car-1"><img src="media/options/cars/collective-435584_1920.jpg" alt=""/><br><p>Elektro-Bus </p></a>\
+                            <a onclick="select(this.id)" id="car-2"><img src="media/options/cars/edinburgh-1688490_1920.jpg" alt=""/><br><p>Doppeldecker Schwarz</p></a>\
+                            <a onclick="select(this.id)" id="car-3"><img src="media/options/cars/london-1567903_1920.jpg" alt=""/><br><p>Doppeldecker Rot</p></a>\
+                            <a onclick="select(this.id)" id="car-4"><img src="media/options/cars/vw-camper-336606_1920.jpg" alt=""/><br><p>VW-Bus </p></a>';
+        }
+    if(optionID === "type-truck"){
+                document.getElementById("car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="car-1"><img src="media/options/cars/kamaz-835535_1280.jpg" alt=""/><br><p>Kamaz </p></a>\
+                            <a onclick="select(this.id)" id="car-2"><img src="media/options/cars/truck-1332564_1920.jpg" alt=""/><br><p>Ford </p></a>\
+                            <a onclick="select(this.id)" id="car-3"><img src="media/options/cars/truck-1565478_1920.jpg" alt=""/><br><p>Weißer Tieflader </p></a>\
+                            <a onclick="select(this.id)" id="car-4"><img src="media/options/cars/volvo-1201106_1920.jpg" alt=""/><br><p>Volvo </p></a>';
+        }
+
+    if(optionID === "tourism-type-car"){
+                document.getElementById("tourism-car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="tourism-car-1"><img src="media/options/cars/road-1762473_1920.jpg" alt=""/><br><p>Mercedes </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-2"><img src="media/options/cars/mercedes-1782740_1280.jpg" alt=""/><br><p>Mercedes SUV </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-3"><img src="media/options/cars/range-rover-1806931_1920.jpg" alt=""/><br><p>Range Rover </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-4"><img src="media/options/cars/sports-car-1349147_1920.jpg" alt=""/><br><p>BMW Cabrio </p></a>';
+        }
+    if(optionID === "tourism-type-transporter"){
+                document.getElementById("tourism-car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="tourism-car-1"><img src="media/options/cars/2014_Renault_Trafic_L2_H1_-_Fl.jpg" alt=""/><br><p>Renault Trafic </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-2"><img src="media/options/cars/renault-Kangoovan-F61-ph2-overview-Design.jpg.ximg.l_full_m.smart.jpg" alt=""/><br><p>Renault Kangoo </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-3"><img src="media/options/cars/renault-master-1024x768-1.jpg" alt=""/><br><p>Renault Master </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-4"><img src="media/options/cars/volkswagen-crafter-2010-models-39255.jpg" alt=""/><br><p>VW Crafter </p></a>';
+        }
+    if(optionID === "tourism-type-bus"){
+                document.getElementById("tourism-car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="tourism-car-1"><img src="media/options/cars/collective-435584_1920.jpg" alt=""/><br><p>Elektro-Bus </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-2"><img src="media/options/cars/edinburgh-1688490_1920.jpg" alt=""/><br><p>Doppeldecker Schwarz</p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-3"><img src="media/options/cars/london-1567903_1920.jpg" alt=""/><br><p>Doppeldecker Rot</p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-4"><img src="media/options/cars/vw-camper-336606_1920.jpg" alt=""/><br><p>VW-Bus </p></a>';
+        }
+    if(optionID === "tourism-type-truck"){
+                document.getElementById("tourism-car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="tourism-car-1"><img src="media/options/cars/kamaz-835535_1280.jpg" alt=""/><br><p>Kamaz </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-2"><img src="media/options/cars/truck-1332564_1920.jpg" alt=""/><br><p>Ford </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-3"><img src="media/options/cars/truck-1565478_1920.jpg" alt=""/><br><p>Weißer Tieflader </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-4"><img src="media/options/cars/volvo-1201106_1920.jpg" alt=""/><br><p>Volvo </p></a>';
+        }
+
+    if(optionID === "city-1"){
+                    document.getElementById("city-sights").innerHTML = '\
+                            <a onclick="select(this.id)" id="sight-1"><img src="media/options/sights/berlin brandenburg-gate-1041803_1920.jpg" alt=""/><br><p>Brandenburger Tor </p></a>\
+                            <a onclick="select(this.id)" id="sight-2"><img src="media/options/sights/berlin kanzleramt-637999_1920.jpg" alt=""/><br><p>Kanzleramt </p></a>\
+                            <a onclick="select(this.id)" id="sight-3"><img src="media/options/sights/berlin mauer-207136_1920.jpg" alt=""/><br><p>Mauer </p></a>\
+                            <a onclick="select(this.id)" id="sight-4"><img src="media/options/sights/berlin museumsinsel-450643_1280.jpg" alt=""/><br><p>Museumsinsel </p></a>';
+        }
+    if(optionID === "city-2"){
+                        document.getElementById("city-sights").innerHTML = '\
+                            <a onclick="select(this.id)" id="sight-1"><img src="media/options/sights/hannover neues rathaus-1718110_1920.jpg" alt=""/><br><p>Neues Rathaus </p></a>\
+                            <a onclick="select(this.id)" id="sight-2"><img src="media/options/sights/hannover gärten-1557381_1920.jpg" alt=""/><br><p>Herrenhäuser Gärten </p></a>\
+                            <a onclick="select(this.id)" id="sight-3"><img src="media/options/sights/hanover alt stadt-329664_1920.jpg" alt=""/><br><p>Altstadt </p></a>\
+                            <a onclick="select(this.id)" id="sight-4"><img src="media/options/sights/zoo-hannover-1511967_1920.jpg" alt=""/><br><p>Zoo </p></a>';
+        }
+    if(optionID === "city-3"){
+                        document.getElementById("city-sights").innerHTML = '\
+                            <a onclick="select(this.id)" id="sight-1"><img src="media/options/sights/münchen schloss nymphen-1787977_1920.jpg" alt=""/><br><p>Nymphenschloss </p></a>\
+                            <a onclick="select(this.id)" id="sight-2"><img src="media/options/sights/münchen marienplatz-1685882_1920.jpg" alt=""/><br><p>Marienplatz </p></a>\
+                            <a onclick="select(this.id)" id="sight-3"><img src="media/options/sights/münchen englischer garten-953637_1920.jpg" alt=""/><br><p>Englischer Garten </p></a>\
+                            <a onclick="select(this.id)" id="sight-4"><img src="media/options/sights/münchner residenz.jpg" alt=""/><br><p>Münchner Residenz </p></a>';
+        }
+    if(optionID === "city-4"){
+                        document.getElementById("city-sights").innerHTML = '\
+                            <a onclick="select(this.id)" id="sight-1"><img src="media/options/sights/dresden semper-opera-house-1216572_1280.jpg" alt=""/><br><p>Opernhaus </p></a>\
+                            <a onclick="select(this.id)" id="sight-2"><img src="media/options/sights/dresden frauenkirche-1252472_1920.jpg" alt=""/><br><p>Frauenkirche </p></a>\
+                            <a onclick="select(this.id)" id="sight-3"><img src="media/options/sights/dresden hofkirche-1541689_1920.jpg" alt=""/><br><p>Hofkirche </p></a>\
+                            <a onclick="select(this.id)" id="sight-4"><img src="media/options/sights/dresden zwinger-956211_1920.jpg" alt=""/><br><p>Zwinger </p></a>';
+        }
+}
+
 function displayTime() {
     var date = new Date();
     var hour = "0"  + date.getHours();

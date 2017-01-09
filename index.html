@@ -47,14 +47,14 @@
         <section id="section-car">
             <h2><a class="options" onclick="show(this)">Typ</a></h2>
             <div class="options single">
-                <a onclick="select(this.id)" id="type-car"><img src="media/options/type-car.png" alt=""/><br><p>PKW </p></a>
-                <a onclick="select(this.id)" id="type-transporter"><img src="media/options/type-transporter.png" alt=""/><br><p>Transporter </p></a>
-                <a onclick="select(this.id)" id="type-bus"><img src="media/options/type-bus.png" alt=""/><br><p>Bus </p></a>
-                <a onclick="select(this.id)" id="type-truck"><img src="media/options/type-truck.png" alt=""/><br><p>LKW </p></a>
+                <a onclick="select(this.id);change(this.id);" id="type-car"><img src="media/options/type-car.png" alt=""/><br><p>PKW </p></a>
+                <a onclick="select(this.id);change(this.id);" id="type-transporter"><img src="media/options/type-transporter.png" alt=""/><br><p>Transporter </p></a>
+                <a onclick="select(this.id);change(this.id);" id="type-bus"><img src="media/options/type-bus.png" alt=""/><br><p>Bus </p></a>
+                <a onclick="select(this.id);change(this.id);" id="type-truck"><img src="media/options/type-truck.png" alt=""/><br><p>LKW </p></a>
             </div>
 
             <h2><a class="options" onclick="show(this)">Auto</a></h2>
-            <div class="options single">
+            <div class="options single" id="car-model">
                 <a onclick="select(this.id)" id="car-1"><img src="media/options/cars/road-1762473_1920.jpg" alt=""/><br><p>Mercedes </p></a>
                 <a onclick="select(this.id)" id="car-2"><img src="media/options/cars/mercedes-1782740_1280.jpg" alt=""/><br><p>Mercedes SUV </p></a>
                 <a onclick="select(this.id)" id="car-3"><img src="media/options/cars/range-rover-1806931_1920.jpg" alt=""/><br><p>Range Rover </p></a>
@@ -140,16 +140,16 @@
         <section id="section-city">
             <h2><a class="options" onclick="show(this)">Stadt</a></h2>
             <div class="options single">
-                <a onclick="select(this.id)" id="city-1"><img src="media/options/sights/berlin brandenburg-gate-1041803_1920.jpg" alt=""/><br><p>Berlin </p></a>
-                <a onclick="select(this.id)" id="city-2"><img src="media/options/sights/hannover neues rathaus-1718110_1920.jpg" alt=""/><br><p>Hannover </p></a>
-                <a onclick="select(this.id)" id="city-3"><img src="media/options/sights/münchen schloss nymphen-1787977_1920.jpg" alt=""/><br><p>München </p></a>
-                <a onclick="select(this.id)" id="city-4"><img src="media/options/sights/dresden semper-opera-house-1216572_1280.jpg" alt=""/><br><p>Dresden </p></a>
+                <a onclick="select(this.id);change(this.id);" id="city-1"><img src="media/options/sights/berlin brandenburg-gate-1041803_1920.jpg" alt=""/><br><p>Berlin </p></a>
+                <a onclick="select(this.id);change(this.id);" id="city-2"><img src="media/options/sights/hannover neues rathaus-1718110_1920.jpg" alt=""/><br><p>Hannover </p></a>
+                <a onclick="select(this.id);change(this.id);" id="city-3"><img src="media/options/sights/münchen schloss nymphen-1787977_1920.jpg" alt=""/><br><p>München </p></a>
+                <a onclick="select(this.id);change(this.id);" id="city-4"><img src="media/options/sights/dresden semper-opera-house-1216572_1280.jpg" alt=""/><br><p>Dresden </p></a>
             </div>
         </section>
 
         <section id="section-sights">
             <h2><a class="options" onclick="show(this)">Sehenswürdigkeiten</a></h2>
-            <div class="options multi">
+            <div class="options multi" id="city-sights">
                 <a onclick="select(this.id)" id="sight-1"><img src="media/options/sights/berlin brandenburg-gate-1041803_1920.jpg" alt=""/><br><p>Brandenburger Tor </p></a>
                 <a onclick="select(this.id)" id="sight-2"><img src="media/options/sights/berlin kanzleramt-637999_1920.jpg" alt=""/><br><p>Kanzleramt </p></a>
                 <a onclick="select(this.id)" id="sight-3"><img src="media/options/sights/berlin mauer-207136_1920.jpg" alt=""/><br><p>Mauer </p></a>
@@ -160,14 +160,14 @@
         <section id="section-details">
             <h2><a class="options" onclick="show(this)">Typ</a></h2>
             <div class="options single">
-                <a onclick="select(this.id)" id="tourism-type-car"><img src="media/options/tourism-type-car.png" alt=""/><br><p>PKW </p></a>
-                <a onclick="select(this.id)" id="tourism-type-transporter"><img src="media/options/tourism-type-transporter.png" alt=""/><br><p>Transporter </p></a>
-                <a onclick="select(this.id)" id="tourism-type-bus"><img src="media/options/tourism-type-bus.png" alt=""/><br><p>Bus </p></a>
-                <a onclick="select(this.id)" id="tourism-type-truck"><img src="media/options/tourism-type-truck.png" alt=""/><br><p>LKW </p></a>
+                <a onclick="select(this.id);change(this.id);" id="tourism-type-car"><img src="media/options/tourism-type-car.png" alt=""/><br><p>PKW </p></a>
+                <a onclick="select(this.id);change(this.id);" id="tourism-type-transporter"><img src="media/options/tourism-type-transporter.png" alt=""/><br><p>Transporter </p></a>
+                <a onclick="select(this.id);change(this.id);" id="tourism-type-bus"><img src="media/options/tourism-type-bus.png" alt=""/><br><p>Bus </p></a>
+                <a onclick="select(this.id);change(this.id);" id="tourism-type-truck"><img src="media/options/tourism-type-truck.png" alt=""/><br><p>LKW </p></a>
             </div>
 
             <h2><a class="options" onclick="show(this)">Auto</a></h2>
-            <div class="options single">
+            <div class="options single" id="tourism-car-model">
                 <a onclick="select(this.id)" id="tourism-car-1"><img src="media/options/cars/road-1762473_1920.jpg" alt=""/><br><p>Mercedes </p></a>
                 <a onclick="select(this.id)" id="tourism-car-2"><img src="media/options/cars/mercedes-1782740_1280.jpg" alt=""/><br><p>Mercedes SUV </p></a>
                 <a onclick="select(this.id)" id="tourism-car-3"><img src="media/options/cars/range-rover-1806931_1920.jpg" alt=""/><br><p>Range Rover </p></a>
