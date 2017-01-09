@@ -73,16 +73,22 @@ function set(name) {
 }
 
 var values = {
-	"username" : "",
-	"type"     : "",
-	"car"      : "",
-	"interior" : [],
-  "extra"    : [],
-  "startDate": "",
-  "startCity": "",
-  "endCity"  : "",
-  "payment"  : "",
-  "sights"   : []
+	"username"		: "",
+	"type"				: "",
+	"tourism-type": "",
+	"car"					: "",
+	"tourism-car"	: "",
+	"interior"		: [],
+	"tourism-interior": [],
+  "extra"				: [],
+	"tourism-extra": [],
+  "startDate"		: "",
+  "startCity"		: "",
+  "endCity"			: "",
+  "payment"			: "",
+	"tourism-payment": "",
+	"city"				: "",
+  "sights"			: []
 };
 
 var dbname = "hci1";
@@ -129,25 +135,45 @@ function saveEndCity(city){
 
 //selectOption is called from display.js and automatically sets (possibly adds) and saves the chosen option
 function selectOption(optionID){
-  if(optionID.startsWith("type")){
+	if(optionID.startsWith("type")){
     values.type = optionID;
     set("type");
+  }
+	else if(optionID.startsWith("tourism-type")){
+    values["tourism-type"] = optionID;
+    set("tourism-type");
   }
   else if(optionID.startsWith("car")){
     values.car = optionID;
     set("car");
   }
+	else if(optionID.startsWith("tourism-car")){
+    values["tourism-car"] = optionID;
+    set("tourism-car");
+  }
   else if(optionID.startsWith("interior")){
     values.interior.push(optionID);
     set("interior");
+  }
+	else if(optionID.startsWith("tourism-interior")){
+    values["tourism-interior"].push(optionID);
+    set("tourism-interior");
   }
   else if(optionID.startsWith("extra")){
     values.extra.push(optionID);
     set("extra");
   }
+	else if(optionID.startsWith("tourism-extra")){
+    values["tourism-extra"].push(optionID);
+    set("tourism-extra");
+  }
   else if(optionID.startsWith("payment")){
     values.payment = optionID;
     set("payment");
+  }
+	else if(optionID.startsWith("tourism-payment")){
+    values["tourism-payment"] = optionID;
+    set("tourism-payment");
   }
   else if(optionID.startsWith("sight")){
     values.sights.push(optionID);
@@ -164,21 +190,41 @@ function deselectOption(optionID){
     values.type = "";
     set("type");
   }
+	else if(optionID.startsWith("tourism-type")){
+    values["tourism-type"] = "";
+    set("tourism-type");
+  }
   else if(optionID.startsWith("car")){
     values.car = "";
     set("car");
   }
-  else if(optionID.startsWith("interior")){
+	else if(optionID.startsWith("tourism-car")){
+    values["tourism-car"] = "";
+    set("tourism-car");
+  }
+	else if(optionID.startsWith("interior")){
     values.interior = removeElement(values.interior, optionID);
     set("interior");
   }
-  else if(optionID.startsWith("extra")){
+	else if(optionID.startsWith("tourism-interior")){
+    values["tourism-interior"] = removeElement(values["tourism-interior"], optionID);
+    set("tourism-interior");
+  }
+	else if(optionID.startsWith("extra")){
     values.extra = removeElement(values.extra, optionID);
     set("extra");
+  }
+	else if(optionID.startsWith("tourism-extra")){
+    values["tourism-extra"] = removeElement(values["tourism-extra"], optionID);
+    set("tourism-extra");
   }
   else if(optionID.startsWith("payment")){
     values.payment = optionID;
     set("payment");
+  }
+	else if(optionID.startsWith("tourism-payment")){
+    values["tourism-payment"] = optionID;
+    set("tourism-payment");
   }
   else if(optionID.startsWith("sight")){
     values.sights = removeElement(values.sights, optionID);

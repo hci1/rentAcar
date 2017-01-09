@@ -107,8 +107,9 @@
 
         <!-- all payment options and an overview go here -->
         <section id="section-payment">
+            <!-- overview -->
             <h2><a class="options" onclick="show(this)">Übersicht</a></h2>
-            <div class="options">
+            <div id="overview-default" class="options" style="display: inline">
               <h3>Bitte prüfen sie ihre Auswahl:</h3>
               <!-- here go all chose options -->
               <p id="chosencar-descr">Auto</p>
@@ -117,6 +118,7 @@
               <p id="chosenstart-descr">Start:</p>
               <p id="chosenend-descr">Zielort:</p>
             </div>
+            <!-- payment options -->
             <h2><a class="options" onclick="show(this)">Zahlung</a></h2>
             <div class="options single">
                 <a onclick="select(this.id)" id="payment-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Zahlung 1 </p></a>
@@ -207,6 +209,20 @@
         </section>
 
         <section id="section-pay">
+            <!-- overview -->
+            <h2><a class="options" onclick="show(this)">Übersicht</a></h2>
+            <div id="overview-sightseeing" class="options" style="display: inline">
+              <h3>Bitte prüfen sie ihre Auswahl:</h3>
+              <!-- here go all chose options; s stands for sightseeing-->
+              <p id="s-chosencity-descr">Stadt</p>
+              <p id="s-chosensights-descr">Sehenswürdigkeiten</p>
+              <p id="s-chosencar-descr">Auto</p>
+              <p id="s-choseninterior-descr">Innenraum</p>
+              <p id="s-chosenextra-descr">Extras</p>
+              <p id="s-chosenstart-descr">Start:</p>
+              <p id="s-chosenend-descr">Zielort:</p>
+            </div>
+
             <h2><a class="options" onclick="show(this)">Zahlung</a></h2>
             <div class="options single">
                 <a onclick="select(this.id)" id="tourism-payment-1"><img src="media/options/placeholder.svg" alt=""/><br><p>Zahlung 1 </p></a>

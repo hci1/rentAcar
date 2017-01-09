@@ -50,6 +50,9 @@ function show(optionsHeader){
         }
 
         option.style.display = "block";
+        // when not using inline display-style this looks weird...
+        if(option.id === "overview-default" || option.id === "overview-sightseeing")
+            option.style.display = "inline";
 
         setTimeout(function(){
             option.style.opacity = 1;
@@ -62,6 +65,8 @@ function display(openID){
 
     if(openID === "payment")
       updatePayment();
+    else if (openID === "pay")
+      updatePay();
 
     //get all correxsponding elements from the DOM structure here
     var sections = document.getElementsByTagName("section");
@@ -145,6 +150,8 @@ function display(openID){
     //make visible the first option
     if (firstOption !== undefined){
         firstOption.style.display = "block";
+        if(firstOption.id === "overview-default" || firstOption.id === "overview-sightseeing")
+            firstOption.style.display = "inline";
         firstOption.style.opacity = 1;
 
         for(i=0; i < firstOption.children.length; i++){
@@ -198,11 +205,51 @@ function updatePayment(){
 
     curDescr = document.getElementById("chosenend-descr");
     curDescr.innerHTML = "Ziel: "+values.endCity;
-
 }
 
 function updatePay(){
+  var curImage, curDescr;
 
+  //when we are searching a string for an occurence of '-' to determine, when the actual property name starts,
+  //we need to ignore the first - after 'tourism-'. therefore we may skip tourismDescriptorOffset
+  //chars on indexOf(...)-search.
+  var tourismDescriptorOffset = "tourism-".length;
+
+  curDescr = document.getElementById("s-chosencity-descr");
+  curDescr.innerHTML = "Stadt: "+values.city.slice(values.city.indexOf('-')+1);
+
+  curDescr = document.getElementById("s-chosensights-descr");
+  curDescr.innerHTML = "Sehenswürdigkeiten: <ul>";
+  for(i=0; i<values.sights.length;i++)
+  {
+      curDescr.innerHTML += "<li>"+values.sights[i].slice(values.sights[i].indexOf('-')+1)+"</li>";
+  }
+  curDescr.innerHTML += "</li>";
+
+  curDescr = document.getElementById("s-chosencar-descr");
+  curDescr.innerHTML = "Auto: "+values["tourism-car"].slice(values["tourism-car"].indexOf('-',tourismDescriptorOffset)+1);
+
+  curDescr = document.getElementById("s-choseninterior-descr");
+  curDescr.innerHTML = "Innenraum: <ul>";
+  for(i=0; i<values.interior.length;i++)
+  {
+      curDescr.innerHTML += "<li>"+values["tourism-interior"][i].slice(values["tourism-interior"][i].indexOf('-',tourismDescriptorOffset)+1)+"</li>";
+  }
+  curDescr.innerHTML += "</li>";
+
+  curDescr = document.getElementById("s-chosenextra-descr");
+  curDescr.innerHTML = "Extras: <ul>";
+  for(i=0; i<values["tourism-extra"].length;i++)
+  {
+      curDescr.innerHTML += "<li>"+values["tourism-extra"][i].slice(values["tourism-extra"][i].indexOf('-',tourismDescriptorOffset)+1)+"</li>";
+  }
+  curDescr.innerHTML += "</li>";
+
+  curDescr = document.getElementById("s-chosenstart-descr");
+  curDescr.innerHTML = "Start: "+values.startDate+" ab "+values.startCity;
+
+  curDescr = document.getElementById("s-chosenend-descr");
+  curDescr.innerHTML = "Ziel: "+values.endCity;
 }
 
 //return all neighbours of this ID
