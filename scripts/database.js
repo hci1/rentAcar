@@ -86,7 +86,7 @@ var values = {
 };
 
 var dbname = "hci1";
-var dburl = "http://localhost:5984/" + dbname + "/";
+var dburl = "http://hciuni.ddns.net:5984/" + dbname + "/";
 
 //all save functions retrieve their values from the html document by getting the
 //inputs via ID
