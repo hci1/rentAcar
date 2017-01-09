@@ -3,22 +3,16 @@
 //once it is created, put(...) will be called, with the stored value from values
 //OR use selectOption(...)
 
+// see https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState
+var DONE = 4;
+
+// see https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+var OK = 200;
+var NOT_FOUND = 404;
+
 var request = new XMLHttpRequest();
 
-//always create a database (if already exisiting, nothing will happen)
-//createDB();
-
 request.onreadystatechange = function() {
-	console.log("onreadystatechange: " + request.readyState + ", " +  request.status);
-	console.log("responseText: " + request.responseText||"No response text");
-
-	// see https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState
-	var DONE = 4;
-
-	// see https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
-	var OK = 200;
-	var NOT_FOUND = 404;
-
 	var message;
 
 	if (request.readyState == DONE) {
@@ -35,7 +29,6 @@ request.onreadystatechange = function() {
 				createDB();
 			} else {
 				var url = request.responseURL;
-				console.log("Putting to URL: "+url);
 				var i = url.lastIndexOf("/", url.length - 1);
 				var name = url.substring(i + 1);
 				message = {};
@@ -44,7 +37,6 @@ request.onreadystatechange = function() {
 			}
 		}
 	}
-	console.log("###################################");
 };
 
 function createDB() {
@@ -52,24 +44,41 @@ function createDB() {
   request.send();
 }
 
-function put(response, message) {
-	console.log("In put(): URL: "+dburl + response._id);
+var dataRequest = new XMLHttpRequest();
 
-	request.open("PUT", dburl + response._id, false);
+dataRequest.onreadystatechange = function() {
+	if (dataRequest.readyState == DONE) {
+		if (dataRequest.status == OK) {
+			var response = JSON.parse(dataRequest.responseText);
+			values[response._id] = response[response._id];
+			selectRetrieved(response._id);
+		}
+		if (dataRequest.status == NOT_FOUND) {
+			console.log("Response: "+NOT_FOUND+" (NOT_FOUND)");
+		}
+	}
+};
+
+function put(response, message) {
+	request.open("PUT", dburl + response._id, true);
 	request.setRequestHeader("Content-type", "application/json");
 	message._id = response._id;
 	if (response._rev) {
 		message._rev = response._rev;
 	}
 	var s = JSON.stringify(message);
-	console.log("In put(): send: "+s);
-	console.log("In put(): message was: "+message);
+
 	request.send(s);
 }
 
 function set(name) {
-  request.open("GET", dburl + name, false);
+  request.open("GET", dburl + name, true);
   request.send();
+}
+
+function get(name){
+	dataRequest.open("GET", dburl + name, false);
+  dataRequest.send();
 }
 
 var values = {
@@ -236,6 +245,45 @@ function deselectOption(optionID){
   }
 }
 
+function initValues(){
+	var key;
+	var i;
+
+	//retrieve all database values
+	for(key in values){
+		get(key);
+	}
+}
+
+function selectRetrieved(key)
+{
+	if(values[key] instanceof Array)
+	{
+		console.log("Selecting Array now...");
+		for(i=0;i<values[key].length;i++)
+		{
+			try{
+				//call the GUI-select() method
+				select(values[key][i]);
+			}
+			catch(err)
+			{
+				console.log("Selecting error on key: "+key+" error: "+err);
+			}
+		}
+	}
+	else {
+		try{
+			//call the GUI-select() method
+			select(values[key]);
+		}
+		catch(err)
+		{
+			console.log("Selecting error on key: "+key+" error:"+err);
+		}
+	}
+}
+
 function removeElement(array, element){
   var newArray = [];
 
@@ -246,3 +294,22 @@ function removeElement(array, element){
     }
     return newArray;
 }
+
+//execute code on startup
+
+//always create a database (if already exisiting, nothing will happen)
+try{
+	createDB();
+}
+catch(err){
+	console.log("Error in createDB():"+err);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+	try{
+	 initValues();
+	}
+	catch(err){
+	 console.log("Error in initValues():"+err);
+	}
+}, false);
