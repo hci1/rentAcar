@@ -63,10 +63,15 @@ function show(optionsHeader){
 function display(openID){
     console.log("Opening: " + openID);
 
-    if(openID === "payment")
-      updatePayment();
-    else if (openID === "pay")
-      updatePay();
+    try {
+      if(openID === "payment")
+        updatePayment();
+      else if (openID === "pay")
+        updatePay();
+    } catch (e) {
+      console.log("Unable to update summary due to an error:");
+      console.log(e);
+    }
 
     //get all correxsponding elements from the DOM structure here
     var sections = document.getElementsByTagName("section");
@@ -231,7 +236,7 @@ function updatePay(){
 
   curDescr = document.getElementById("s-choseninterior-descr");
   curDescr.innerHTML = "Innenraum: <ul>";
-  for(i=0; i<values.interior.length;i++)
+  for(i=0; i<values["tourism-interior"].length;i++)
   {
       curDescr.innerHTML += "<li>"+values["tourism-interior"][i].slice(values["tourism-interior"][i].indexOf('-',tourismDescriptorOffset)+1)+"</li>";
   }
