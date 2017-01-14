@@ -333,11 +333,11 @@ function select(optionID){
 
 function change(optionID){
     if(optionID === "type-car"){
-                document.getElementById("car-model").innerHTML = '\
-                            <a onclick="select(this.id)" id="car-Mercedes"><img src="media/options/cars/road-1762473_1920.jpg" alt=""/><br><p>Mercedes </p></a>\
-                            <a onclick="select(this.id)" id="car-Mercedes SUV"><img src="media/options/cars/mercedes-1782740_1280.jpg" alt=""/><br><p>Mercedes SUV </p></a>\
-                            <a onclick="select(this.id)" id="car-Range Rover"><img src="media/options/cars/range-rover-1806931_1920.jpg" alt=""/><br><p>Range Rover </p></a>\
-                            <a onclick="select(this.id)" id="car-BMW Cabrio"><img src="media/options/cars/sports-car-1349147_1920.jpg" alt=""/><br><p>BMW Cabrio </p></a>';
+                document.getElementById("car-model").innerHTML =
+                            '<a onclick="select(this.id)" id="car-Mercedes"><img src="media/options/cars/road-1762473_1920.jpg" alt=""/><br><p>Mercedes </p></a>'+
+                            '<a onclick="select(this.id)" id="car-Mercedes SUV"><img src="media/options/cars/mercedes-1782740_1280.jpg" alt=""/><br><p>Mercedes SUV </p></a>'+
+                            '<a onclick="select(this.id)" id="car-Range Rover"><img src="media/options/cars/range-rover-1806931_1920.jpg" alt=""/><br><p>Range Rover </p></a>'+
+                            '<a onclick="select(this.id)" id="car-BMW Cabrio"><img src="media/options/cars/sports-car-1349147_1920.jpg" alt=""/><br><p>BMW Cabrio </p></a>';
         }
     if(optionID === "type-transporter"){
                 document.getElementById("car-model").innerHTML = '\

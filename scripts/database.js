@@ -142,106 +142,111 @@ function saveEndCity(city){
 	set("endCity");
 }
 
+
 //selectOption is called from display.js and automatically sets (possibly adds) and saves the chosen option
 function selectOption(optionID){
+	// disable the couchDB functionality (no "set" is called) because there is no
+	// need to use it
 	if(optionID.startsWith("type")){
     values.type = optionID;
-    set("type");
+    // set("type");
   }
 	else if(optionID.startsWith("tourism-type")){
     values["tourism-type"] = optionID;
-    set("tourism-type");
+    // set("tourism-type");
   }
   else if(optionID.startsWith("car")){
     values.car = optionID;
-    set("car");
+    // set("car");
   }
 	else if(optionID.startsWith("tourism-car")){
     values["tourism-car"] = optionID;
-    set("tourism-car");
+    // set("tourism-car");
   }
   else if(optionID.startsWith("interior")){
     values.interior.push(optionID);
-    set("interior");
+    // set("interior");
   }
 	else if(optionID.startsWith("tourism-interior")){
     values["tourism-interior"].push(optionID);
-    set("tourism-interior");
+    // set("tourism-interior");
   }
   else if(optionID.startsWith("extra")){
     values.extra.push(optionID);
-    set("extra");
+    // set("extra");
   }
 	else if(optionID.startsWith("tourism-extra")){
     values["tourism-extra"].push(optionID);
-    set("tourism-extra");
+    // set("tourism-extra");
   }
   else if(optionID.startsWith("payment")){
     values.payment = optionID;
-    set("payment");
+    // set("payment");
   }
 	else if(optionID.startsWith("tourism-payment")){
     values["tourism-payment"] = optionID;
-    set("tourism-payment");
+    // set("tourism-payment");
   }
   else if(optionID.startsWith("sight")){
     values.sights.push(optionID);
-    set("sights");
+    // set("sights");
   }
   else if(optionID.startsWith("city")){
     values.city = optionID;
-    set("city");
+    // set("city");
   }
 }
 
 function deselectOption(optionID){
+	// disable the couchDB functionality (no "set" is called) because there is no
+	// need to use it
   if(optionID.startsWith("type")){
     values.type = "";
-    set("type");
+    // set("type");
   }
 	else if(optionID.startsWith("tourism-type")){
     values["tourism-type"] = "";
-    set("tourism-type");
+    // set("tourism-type");
   }
   else if(optionID.startsWith("car")){
     values.car = "";
-    set("car");
+    // set("car");
   }
 	else if(optionID.startsWith("tourism-car")){
     values["tourism-car"] = "";
-    set("tourism-car");
+    // set("tourism-car");
   }
 	else if(optionID.startsWith("interior")){
     values.interior = removeElement(values.interior, optionID);
-    set("interior");
+    // set("interior");
   }
 	else if(optionID.startsWith("tourism-interior")){
     values["tourism-interior"] = removeElement(values["tourism-interior"], optionID);
-    set("tourism-interior");
+    // set("tourism-interior");
   }
 	else if(optionID.startsWith("extra")){
     values.extra = removeElement(values.extra, optionID);
-    set("extra");
+    // set("extra");
   }
 	else if(optionID.startsWith("tourism-extra")){
     values["tourism-extra"] = removeElement(values["tourism-extra"], optionID);
-    set("tourism-extra");
+    // set("tourism-extra");
   }
   else if(optionID.startsWith("payment")){
     values.payment = optionID;
-    set("payment");
+    // set("payment");
   }
 	else if(optionID.startsWith("tourism-payment")){
     values["tourism-payment"] = optionID;
-    set("tourism-payment");
+    // set("tourism-payment");
   }
   else if(optionID.startsWith("sight")){
     values.sights = removeElement(values.sights, optionID);
-    set("sights");
+    // set("sights");
   }
   else if(optionID.startsWith("city")){
     values.city = optionID;
-    set("city");
+    // set("city");
   }
 }
 
@@ -295,11 +300,13 @@ function removeElement(array, element){
     return newArray;
 }
 
+// database is disabled right now
+
 //execute code on startup
 
 //always create a database (if already exisiting, nothing will happen)
 try{
-	createDB();
+	// createDB();
 }
 catch(err){
 	console.log("Error in createDB():"+err);
@@ -307,7 +314,7 @@ catch(err){
 
 document.addEventListener('DOMContentLoaded', function() {
 	try{
-	 initValues();
+	//  initValues();
 	}
 	catch(err){
 	 console.log("Error in initValues():"+err);
