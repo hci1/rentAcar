@@ -90,15 +90,15 @@
             <div class="options">
                 <form>
                     <p>Abfahrtszeit:
-                            <input type="datetime-local" onkeydown="saveStartDate(this.value); return false;" id="startdate"/>
+                            <input type="datetime-local" onkeydown="saveStartDate(this.value); return true;" id="startdate"/>
                             <input type="button" value="Jetzt" onclick="currentTime('startdate')"/>
                     </p>
                     <p>Abfahrtsort:
-                            <input type="text" onkeydown="saveStartCity(this.value); return false;" id="startcity"/>
+                            <input type="text" onkeydown="saveStartCity(this.value); return true;" id="startcity"/>
                             <input type="button" value="Mein Standort" onclick="myLocation('startcity')"/>
                     </p>
                     <p>Ankunftsort:
-                            <input type="text" onkeydown="saveEndCity(this.value); return false;" id="endcity"/>
+                            <input type="text" onkeydown="saveEndCity(this.value); return true;" id="endcity"/>
                             <input type="button" value="Mein Standort" onclick="myLocation('endcity')"/>
                     </p>
                 </form>
@@ -194,15 +194,15 @@
             <div class="options">
                 <form onsubmit="saveStartDate(); saveStartCity(); saveEndCity();">
                     <p>Abfahrtszeit:
-                        <input type="datetime-local" onkeydown="saveStartDate(this.value); return false;" id="tourism-startdate"/>
+                        <input type="datetime-local" onkeydown="saveStartDate(this.value); return true;" id="tourism-startdate"/>
                         <input type="button" value="Jetzt" onclick="currentTime('tourism-startdate')"/>
                     </p>
                     <p>Abfahrtsort:
-                        <input type="text" onkeydown="saveStartCity(this.value); return false;" id="tourism-startcity"/>
+                        <input type="text" onkeydown="saveStartCity(this.value); return true;" id="tourism-startcity"/>
                         <input type="button" value="Mein Standort" onclick="myLocation('tourism-startcity')"/>
                     </p>
                     <p>Ankunftsort:
-                        <input type="text" onkeydown="saveEndCity(this.value); return false;" id="tourism-endcity"/>
+                        <input type="text" onkeydown="saveEndCity(this.value); return true;" id="tourism-endcity"/>
                         <input type="button" value="Mein Standort" onclick="myLocation('tourism-endcity')"/>
                     </p>
                 </form>
