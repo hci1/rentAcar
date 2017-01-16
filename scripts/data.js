@@ -16,3 +16,26 @@ var sections = [
         "pay"
     ]
 ];
+
+var ids = [
+    [
+        "car",
+        "auto",
+        "interior",
+        "seat",
+        "calendar",
+        "payment",
+        "zahlung"
+     ],
+     [
+        "city",
+        "sights",
+        "details",
+        "tauto",
+        "tinnenraum",
+        "textras",
+        "tfahrt",
+        "pay",
+        "tzahlung"
+     ]
+];

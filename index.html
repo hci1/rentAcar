@@ -17,7 +17,7 @@
     <main>
         <section id="section-start">
             <a onclick="choose('car_rental')"><img src="media/options/car-rental.png"/><br>Autovermietung</a>
-            <a onclick="choose('tourism')"><img src="media/options/tourism.png"/><br>Städte</a>
+            <a onclick="choose('tourism')"><img src="media/options/tourism.png"/><br>Stadtbesichtigung</a>
         </section>
 
         <section id="section-login">
@@ -53,7 +53,7 @@
                 <a onclick="select(this.id);change(this.id);" id="type-truck"><img src="media/options/type-truck.png" alt=""/><br><p>LKW </p></a>
             </div>
 
-            <h2><a class="options" onclick="show(this)">Auto</a></h2>
+            <h2><a class="options" id="auto" onclick="show(this)">Auto</a></h2>
             <div class="options single" id="car-model">
                 <a onclick="select(this.id)" id="car-Mercedes"><img src="media/options/cars/road-1762473_1920.jpg" alt=""/><br><p>Mercedes </p></a>
                 <a onclick="select(this.id)" id="car-Mercedes SUV"><img src="media/options/cars/mercedes-1782740_1280.jpg" alt=""/><br><p>Mercedes SUV </p></a>
@@ -65,7 +65,7 @@
         <!-- choose car interior -->
         <section id="section-interior">
             <h2><a class="options" onclick="show(this)">Innenraum</a></h2>
-            <div class="options single">
+            <div class="options multi">
                 <a onclick="select(this.id)" id="interior-Weiß"><img src="media/options/bmw-1911913_1920.jpg" alt=""/><br><p>Weiß </p></a>
                 <a onclick="select(this.id)" id="interior-Schwarz"><img src="media/options/car-1882690_1920.jpg" alt=""/><br><p>Schwarz </p></a>
                 <a onclick="select(this.id)" id="interior-Anthrazit"><img src="media/options/car-1882692_1920.jpg" alt=""/><br><p>Anthrazit </p></a>
@@ -90,15 +90,15 @@
             <div class="options">
                 <form>
                     <p>Abfahrtszeit:
-                            <input type="datetime-local" onkeydown="saveStartDate(this.value); return true;" id="startdate"/>
+                            <input type="datetime-local" onkeydown="saveStartDate(this.value); return false;" id="startdate"/>
                             <input type="button" value="Jetzt" onclick="currentTime('startdate')"/>
                     </p>
                     <p>Abfahrtsort:
-                            <input type="text" onkeydown="saveStartCity(this.value); return true;" id="startcity"/>
+                            <input type="text" onkeydown="saveStartCity(this.value); return false;" id="startcity"/>
                             <input type="button" value="Mein Standort" onclick="myLocation('startcity')"/>
                     </p>
                     <p>Ankunftsort:
-                            <input type="text" onkeydown="saveEndCity(this.value); return true;" id="endcity"/>
+                            <input type="text" onkeydown="saveEndCity(this.value); return false;" id="endcity"/>
                             <input type="button" value="Mein Standort" onclick="myLocation('endcity')"/>
                     </p>
                 </form>
@@ -119,7 +119,7 @@
               <p id="chosenend-descr">Zielort:</p>
             </div>
             <!-- payment options -->
-            <h2><a class="options" onclick="show(this)">Zahlung</a></h2>
+            <h2><a class="options" id="zahlung" onclick="show(this)">Zahlung</a></h2>
             <div class="options single">
                 <a onclick="select(this.id)" id="payment-paypal"><img src="media/options/de-pp-logo-200px.png" alt=""/><br><p>Paypal </p></a>
                 <a onclick="select(this.id)" id="payment-ec"><img src="media/options/Logo_EC_60_px.jpg" alt=""/><br><p>EC </p></a>
@@ -167,7 +167,7 @@
                 <a onclick="select(this.id);change(this.id);" id="tourism-type-truck"><img src="media/options/tourism-type-truck.png" alt=""/><br><p>LKW </p></a>
             </div>
 
-            <h2><a class="options" onclick="show(this)">Auto</a></h2>
+            <h2><a class="options" id="tauto" onclick="show(this)">Auto</a></h2>
             <div class="options single" id="tourism-car-model">
                 <a onclick="select(this.id)" id="tourism-car-Mercedes"><img src="media/options/cars/road-1762473_1920.jpg" alt=""/><br><p>Mercedes </p></a>
                 <a onclick="select(this.id)" id="tourism-car-Mercedes SUV"><img src="media/options/cars/mercedes-1782740_1280.jpg" alt=""/><br><p>Mercedes SUV </p></a>
@@ -175,34 +175,34 @@
                 <a onclick="select(this.id)" id="tourism-car-BMW Cabrio"><img src="media/options/cars/sports-car-1349147_1920.jpg" alt=""/><br><p>BMW Cabrio </p></a>
             </div>
 
-            <h2><a class="options" onclick="show(this)">Innenraum</a></h2>
-            <div class="options single">
+            <h2><a class="options" id="tinnenraum" onclick="show(this)">Innenraum</a></h2>
+            <div class="options multi">
                 <a onclick="select(this.id)" id="tourism-interior-Weiß"><img src="media/options/bmw-1911913_1920.jpg" alt=""/><br><p>Weiß </p></a>
                 <a onclick="select(this.id)" id="tourism-interior-Schwarz"><img src="media/options/car-1882690_1920.jpg" alt=""/><br><p>Black </p></a>
                 <a onclick="select(this.id)" id="tourism-interior-Anthrazit"><img src="media/options/car-1882692_1920.jpg" alt=""/><br><p>Anthrazit </p></a>
                 <a onclick="select(this.id)" id="tourism-interior-Beige"><img src="media/options/steering-wheel-801994_1920.jpg" alt=""/><br><p>Beige </p></a>
             </div>
 
-            <h2><a class="options" onclick="show(this)">Extras</a></h2>
+            <h2><a class="options" id="textras" onclick="show(this)">Extras</a></h2>
             <div class="options multi">
                 <a onclick="select(this.id)" id="tourism-extra-Bordcomputer"><img src="media/options/car-1458720_1920.jpg" alt=""/><br><p>Bordcomputer </p></a>
                 <a onclick="select(this.id)" id="tourism-extra-Klimaanlage"><img src="media/options/mercedes-benz-1862510_1920.jpg" alt=""/><br><p>Klimaanlage </p></a>
                 <a onclick="select(this.id)" id="tourism-extra-Automatik"><img src="media/options/button-1838430_1920.jpg" alt=""/><br><p>Automatik </p></a>
                 <a onclick="select(this.id)" id="tourism-extra-Sitzheizung"><img src="media/options/mercedes-1733255_1920.jpg" alt=""/><br><p>Sitzheizung </p></a>
             </div>
-            <h2><a class="options" onclick="show(this)">Fahrt</a></h2>
+            <h2><a class="options" id="tfahrt" onclick="show(this)">Fahrt</a></h2>
             <div class="options">
                 <form onsubmit="saveStartDate(); saveStartCity(); saveEndCity();">
                     <p>Abfahrtszeit:
-                        <input type="datetime-local" onkeydown="saveStartDate(this.value); return true;" id="tourism-startdate"/>
+                        <input type="datetime-local" onkeydown="saveStartDate(this.value); return false;" id="tourism-startdate"/>
                         <input type="button" value="Jetzt" onclick="currentTime('tourism-startdate')"/>
                     </p>
                     <p>Abfahrtsort:
-                        <input type="text" onkeydown="saveStartCity(this.value); return true;" id="tourism-startcity"/>
+                        <input type="text" onkeydown="saveStartCity(this.value); return false;" id="tourism-startcity"/>
                         <input type="button" value="Mein Standort" onclick="myLocation('tourism-startcity')"/>
                     </p>
                     <p>Ankunftsort:
-                        <input type="text" onkeydown="saveEndCity(this.value); return true;" id="tourism-endcity"/>
+                        <input type="text" onkeydown="saveEndCity(this.value); return false;" id="tourism-endcity"/>
                         <input type="button" value="Mein Standort" onclick="myLocation('tourism-endcity')"/>
                     </p>
                 </form>
@@ -224,7 +224,7 @@
               <p id="s-chosenend-descr">Zielort:</p>
             </div>
 
-            <h2><a class="options" onclick="show(this)">Zahlung</a></h2>
+            <h2><a class="options" id="tzahlung" onclick="show(this)">Zahlung</a></h2>
             <div class="options single">
                 <a onclick="select(this.id)" id="tourism-payment-paypal"><img src="media/options/de-pp-logo-200px.png" alt=""/><br><p>Paypal </p></a>
                 <a onclick="select(this.id)" id="tourism-payment-ec"><img src="media/options/Logo_EC_60_px.jpg" alt=""/><br><p>EC </p></a>

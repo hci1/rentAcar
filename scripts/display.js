@@ -39,6 +39,54 @@ function show(optionsHeader){
             options[i].style.opacity = 0;
     }
 
+    if(optionsHeader.id === "auto" ||
+       optionsHeader.id === "zahlung" ||
+       optionsHeader.id === "tauto" ||
+       optionsHeader.id === "tinnenraum" ||
+       optionsHeader.id === "textras" ||
+       optionsHeader.id === "tfahrt" ||
+       optionsHeader.id === "tzahlung"){
+        var neighbors = getNeighbors(optionsHeader.id);
+
+        //if the predeccessor is available, enable the back button, disable it otherwise
+            if(neighbors[0] !== ""){
+                if(neighbors[0] === "auto"){
+                    document.getElementById("back").onclick = function(){display(getNeighbors(neighbors[0])[0]);
+                    show(document.getElementById(neighbors[0]));};
+                }else if(neighbors[0] === "tfahrt"){
+                    document.getElementById("back").onclick = function(){display("details");
+                    show(document.getElementById(neighbors[0]));};
+                }else if(neighbors[0] === "tauto" ||
+                            neighbors[0] === "tinnenraum" ||
+                            neighbors[0] === "textras"){
+                    document.getElementById("back").onclick = function(){show(document.getElementById(neighbors[0]));};
+                }else{
+                document.getElementById("back").onclick = function(){display(neighbors[0]);};
+                }
+                document.getElementById("back").style.opacity = 1;
+            }else{
+                document.getElementById("back").style.opacity = 0;
+            }
+
+            //if the follow up ID is available, enable the next button, disable it otherwise
+            if(neighbors[1] !== ""){
+                if(neighbors[1] === "auto" ||
+                            neighbors[1] === "zahlung" ||
+                            neighbors[1] === "tauto" ||
+                            neighbors[1] === "tinnenraum" ||
+                            neighbors[1] === "textras" ||
+                            neighbors[1] === "tfahrt" ||
+                            neighbors[1] === "tzahlung"){
+                    document.getElementById("forth").onclick = function(){show(document.getElementById(neighbors[1]));};
+                }else{
+                document.getElementById("forth").onclick = function(){display(neighbors[1]);};
+                }
+                document.getElementById("forth").style.opacity = 1;
+            }else{
+                document.getElementById("forth").style.opacity = 0;
+            }
+    }
+
     setTimeout(function(){
         // for(var i = 1; i < options.length; i+=2){
         //     options[i].style.display = "none";
@@ -78,6 +126,7 @@ function display(openID){
     var navs = document.getElementsByTagName("nav");
     var options = document.getElementsByClassName("options");
 
+
     //retrieve the neighbours of this section
     var neighbors = getNeighbors(openID);
 
@@ -112,17 +161,41 @@ function display(openID){
     }
 
 
+
+
     //if the predeccessor is available, enable the back button, disable it otherwise
     if(neighbors[0] !== ""){
+        if(neighbors[0] === "auto"){
+            document.getElementById("back").onclick = function(){display(getNeighbors(neighbors[0])[0]);
+            show(document.getElementById(neighbors[0]));};
+        }else if(neighbors[0] === "tfahrt"){
+            document.getElementById("back").onclick = function(){display("details");
+            show(document.getElementById(neighbors[0]));};
+        }else if(neighbors[0] === "tauto" ||
+            neighbors[0] === "tinnenraum" ||
+            neighbors[0] === "textras"){
+            document.getElementById("back").onclick = function(){show(document.getElementById(neighbors[0]));};
+        }else{
         document.getElementById("back").onclick = function(){display(neighbors[0]);};
+        }
         document.getElementById("back").style.opacity = 1;
     }else{
         document.getElementById("back").style.opacity = 0;
     }
 
-    //if thefollow up ID is available, enable the next button, disable it otherwise
+    //if the follow up ID is available, enable the next button, disable it otherwise
     if(neighbors[1] !== ""){
+        if(neighbors[1] === "auto" ||
+         neighbors[1] === "zahlung" ||
+         neighbors[1] === "tauto" ||
+         neighbors[1] === "tinnenraum" ||
+         neighbors[1] === "textras" ||
+         neighbors[1] === "tfahrt" ||
+         neighbors[1] === "tzahlung"){
+            document.getElementById("forth").onclick = function(){show(document.getElementById(neighbors[1]));};
+        }else{
         document.getElementById("forth").onclick = function(){display(neighbors[1]);};
+        }
         document.getElementById("forth").style.opacity = 1;
     }else{
         document.getElementById("forth").style.opacity = 0;
@@ -264,7 +337,7 @@ function getNeighbors(id){
     var neighbors = [];
     var index;
 
-    sections.forEach(function(section){
+    ids.forEach(function(section){
         if ((index = section.indexOf(id)) !== -1){
             if(index === 0){
                 //special case: there is no neighbour prior to the start ID
