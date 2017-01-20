@@ -77,9 +77,13 @@ function show(optionsHeader){
                             neighbors[1] === "textras" ||
                             neighbors[1] === "tfahrt" ||
                             neighbors[1] === "tzahlung"){
-                    document.getElementById("forth").onclick = function(){show(document.getElementById(neighbors[1]));};
+                    document.getElementById("forth").onclick = function () {
+                        checkData(this, neighbors, document.getElementById(neighbors[1]));
+                    };
                 }else{
-                document.getElementById("forth").onclick = function(){display(neighbors[1]);};
+                    document.getElementById("forth").onclick = function () {
+                        checkData(this, neighbors, neighbors[1]);
+                    };
                 }
                 document.getElementById("forth").style.opacity = 1;
             }else{
@@ -160,9 +164,6 @@ function display(openID){
         }
     }
 
-
-
-
     //if the predeccessor is available, enable the back button, disable it otherwise
     if(neighbors[0] !== ""){
         if(neighbors[0] === "auto"){
@@ -192,9 +193,13 @@ function display(openID){
          neighbors[1] === "textras" ||
          neighbors[1] === "tfahrt" ||
          neighbors[1] === "tzahlung"){
-            document.getElementById("forth").onclick = function(){show(document.getElementById(neighbors[1]));};
+            document.getElementById("forth").onclick = function () {
+                checkData(this, neighbors, document.getElementById(neighbors[1]));
+            };
         }else{
-        document.getElementById("forth").onclick = function(){display(neighbors[1]);};
+            document.getElementById("forth").onclick = function () {
+                checkData(this, neighbors, neighbors[1]);
+            };
         }
         document.getElementById("forth").style.opacity = 1;
     }else{
@@ -253,6 +258,127 @@ function display(openID){
             section.style.opacity = 1;
         }, 100);
     }, 100);
+}
+
+function checkData(obj, neighbors, data) {
+    if (typeof data === "object") {
+        var step = typeof neighbors === "object" ? neighbors.id : neighbors[1];
+
+        if (step === "auto") {
+            if (isEmpty(values.type)) {
+                alert("Bitte wählen Sie einen Typ aus!");
+                return;
+            }
+        }
+        else if (step === "zahlung") {
+            //Übersicht
+        }
+        else if (step === "tauto") {
+            if (isEmpty(values["tourism-type"])) {
+                alert("Bitte wählen Sie einen Autotypen aus!");
+                return;
+            }
+        }
+        else if (step === "tinnenraum") {
+            if (isEmpty(values["tourism-car"])) {
+                alert("Bitte wählen Sie ein Auto aus!");
+                return;
+            }
+        }
+        else if (step === "textras") {
+            if (values["tourism-interior"].length == 0) {
+                alert("Bitte wählen Sie mindestens einen Innenraum aus!");
+                return;
+            }
+        }
+        else if (step === "tfahrt") {
+            if (values["tourism-extra"].length == 0) {
+                alert("Bitte wählen Sie mindestens ein Extra aus!");
+                return;
+            }
+        }
+        else if (step === "tzahlung") {
+            //Übersicht
+        }
+
+        show(data);
+    }
+    else {
+        if (obj.className === "future") {
+            return;
+        }
+
+        if (data === "interior") {
+            if (isEmpty(values.car)) {
+                alert("Bitte wählen Sie ein Auto aus!");
+                return;
+            }
+        }
+        else if (data === "seat") {
+            if (values.interior.length == 0) {
+                alert("Bitte wählen Sie mindestens einen Innenraum aus!");
+                return;
+            }
+        }
+        else if (data === "calendar") {
+            if (values.extra.length == 0) {
+                alert("Bitte wählen Sie mindestens ein Extra aus!");
+                return;
+            }
+        }
+        else if (data === "payment") {
+            if (isEmpty(document.getElementById("startcity").value)) {
+                alert("Bitte wählen Sie einen Start aus!");
+                return;
+            }
+            else if (isEmpty(document.getElementById("startdate").value)) {
+                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                return;
+            }
+            else if (isEmpty(document.getElementById("endcity").value)) {
+                alert("Bitte wählen Sie ein Ziel aus!");
+                return;
+            }
+        }
+        else if (data === "success") {
+            if (isEmpty(values.payment)) {
+                alert("Bitte wählen Sie eine Zahlungsmethode aus!");
+                return;
+            }
+        }
+        else if (data === "sights") {
+            if (isEmpty(values.city)) {
+                alert("Bitte wählen Sie eine Stadt aus!");
+                return;
+            }
+        }
+        else if (data === "details") {
+            if (values.sights.length == 0) {
+                alert("Bitte wählen Sie mindestens ein Sehenswürdigkeit aus!");
+                return;
+            }
+        }
+        else if (data == "pay") {
+            if (isEmpty(document.getElementById("tourism-startcity").value)) {
+                alert("Bitte wählen Sie einen Start aus!");
+                return;
+            }
+            else if (isEmpty(document.getElementById("tourism-startdate").value)) {
+                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                return;
+            }
+            else if (isEmpty(document.getElementById("tourism-endcity").value)) {
+                alert("Bitte wählen Sie ein Ziel aus!");
+                return;
+            }
+        }
+
+        display(data);
+    }
+}
+
+function isEmpty(obj) {
+    return typeof obj === 'undefined' || obj == "" || obj === null;
 }
 
 // this will update the payment sectionand is called from show(...) before opending the tab
