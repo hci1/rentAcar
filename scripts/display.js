@@ -262,7 +262,7 @@ function display(openID){
 
 function checkData(obj, neighbors, data) {
     if (typeof data === "object") {
-        var step = typeof neighbors === "object" ? neighbors.id : neighbors[1];
+        var step = typeof neighbors === "object" ? ((typeof neighbors.id) === 'undefined' ? neighbors[1] : neighbors.id) : neighbors[1];
 
         if (step === "auto") {
             if (isEmpty(values.type)) {
@@ -280,16 +280,16 @@ function checkData(obj, neighbors, data) {
             }
         }
         else if (step === "tinnenraum") {
-            if (isEmpty(values["tourism-car"])) {
+            /*if (isEmpty(values["tourism-car"])) {
                 alert("Bitte wählen Sie ein Auto aus!");
                 return;
-            }
+             }*/
         }
         else if (step === "textras") {
-            if (values["tourism-interior"].length == 0) {
+            /*if (values["tourism-interior"].length == 0) {
                 alert("Bitte wählen Sie mindestens einen Innenraum aus!");
                 return;
-            }
+             }*/
         }
         else if (step === "tfahrt") {
             if (values["tourism-extra"].length == 0) {
@@ -315,16 +315,16 @@ function checkData(obj, neighbors, data) {
             }
         }
         else if (data === "seat") {
-            if (values.interior.length == 0) {
+            /*if (values.interior.length == 0) {
                 alert("Bitte wählen Sie mindestens einen Innenraum aus!");
                 return;
-            }
+             }*/
         }
         else if (data === "calendar") {
-            if (values.extra.length == 0) {
+            /*if (values.extra.length == 0) {
                 alert("Bitte wählen Sie mindestens ein Extra aus!");
                 return;
-            }
+             }*/
         }
         else if (data === "payment") {
             if (isEmpty(document.getElementById("startcity").value)) {
