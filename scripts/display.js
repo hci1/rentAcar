@@ -504,10 +504,10 @@ function updatePay(){
     newHTML += "<p>"+values.city.slice(values.city.indexOf('-')+1)+"</p>";
     newHTML += '</td>';
     newHTML += '</tr>';
-    
+
     // process sights value
     newHTML += '<tr>';
-    newHTML += '<td><p>Tour</p></td>';
+    newHTML += '<td><p>Sehenswürdigkeiten</p></td>';
     newHTML += '<td>';
     for(i=0; i<values.sights.length;i++)
     {
@@ -515,12 +515,12 @@ function updatePay(){
     }
     newHTML += '</td>';
     newHTML += '</tr>';
-    
+
     // process car value
     newHTML += '<tr>';
     newHTML += '<td><p>Auto</p></td>';
     newHTML += '<td>';
-    newHTML += "<p>"+values.car.slice(values.car.indexOf('-')+1)+"</p>";
+    newHTML += "<p>"+values["tourism-car"].slice(values["tourism-car"].indexOf('-',tourismDescriptorOffset)+1)+"</p>";
     newHTML += '</td>';
     newHTML += '</tr>';
 
@@ -528,9 +528,9 @@ function updatePay(){
     newHTML += '<tr>';
     newHTML += '<td><p>Innenraum</p></td>';
     newHTML += '<td>';
-    for(i=0; i<values.interior.length;i++)
+    for(i=0; i<values["tourism-interior"].length;i++)
     {
-        newHTML += "<p>"+values.interior[i].slice(values.interior[i].indexOf('-')+1)+"</p>";
+        newHTML += "<p>"+values["tourism-interior"][i].slice(values["tourism-interior"][i].indexOf('-',tourismDescriptorOffset)+1)+"</p>";
     }
     newHTML += '</td>';
     newHTML += '</tr>';
@@ -539,9 +539,9 @@ function updatePay(){
     newHTML += '<tr>';
     newHTML += '<td><p>Extras</p></td>';
     newHTML += '<td>';
-    for(i=0; i<values.extra.length;i++)
+    for(i=0; i<values["tourism-extra"].length;i++)
     {
-        newHTML += "<p>"+values.extra[i].slice(values.extra[i].indexOf('-')+1)+"</p>";
+        newHTML += "<p>"+values["tourism-extra"][i].slice(values["tourism-extra"][i].indexOf('-',tourismDescriptorOffset)+1)+"</p>";
     }
     newHTML += '</td>';
     newHTML += '</tr>';
@@ -550,7 +550,7 @@ function updatePay(){
     newHTML += '<tr>';
     newHTML += '<td><p>Abfahrtsort</p></td>';
     newHTML += '<td>';
-    newHTML += "<p>"+document.getElementById("startcity").value+"</p>";
+    newHTML += "<p>"+document.getElementById("tourism-startcity").value+"</p>";
     newHTML += '</td>';
     newHTML += '</tr>';
 
@@ -558,7 +558,7 @@ function updatePay(){
     newHTML += '<tr>';
     newHTML += '<td><p>Abfahrtsdatum</p></td>';
     newHTML += '<td>';
-    newHTML += "<p>"+document.getElementById("startdate").value+"</p>";
+    newHTML += "<p>"+document.getElementById("tourism-startdate").value+"</p>";
     newHTML += '</td>';
     newHTML += '</tr>';
 
@@ -566,7 +566,7 @@ function updatePay(){
     newHTML += '<tr>';
     newHTML += '<td><p>Ankunftsort</p></td>';
     newHTML += '<td>';
-    newHTML += "<p>"+document.getElementById("endcity").value+"</p>";
+    newHTML += "<p>"+document.getElementById("tourism-endcity").value+"</p>";
     newHTML += '</td>';
     newHTML += '</tr>';
 
@@ -574,7 +574,7 @@ function updatePay(){
     newHTML += '<tr>';
     newHTML += '<td><p>Gesamtkosten </p></td>';
     newHTML += '<td>';
-    newHTML += "<p>"+Math.floor((Math.random() * 100) + 20) +",95€</p>";
+    newHTML += "<p>"+Math.floor((Math.random() * 100) + 40) +",95€</p>";
     newHTML += '</td>';
     newHTML += '</tr>';
 
@@ -583,32 +583,8 @@ function updatePay(){
     '</table>';
 
     targetNode.innerHTML = newHTML;
-  
-  var curImage, curDescr;
 
-  
 
-  curDescr = document.getElementById("s-chosencity-descr");
-  curDescr.innerHTML = "Stadt: "+values.city.slice(values.city.indexOf('-')+1);
-
-  curDescr = document.getElementById("s-chosensights-descr");
-  curDescr.innerHTML = "Sehenswürdigkeiten: <ul>";
-  for(i=0; i<values.sights.length;i++)
-  {
-      curDescr.innerHTML += "<li>"+values.sights[i].slice(values.sights[i].indexOf('-')+1)+"</li>";
-  }
-  curDescr.innerHTML += "</li>";
-
-  curDescr = document.getElementById("s-chosencar-descr");
-  curDescr.innerHTML = "Auto: "+values["tourism-car"].slice(values["tourism-car"].indexOf('-',tourismDescriptorOffset)+1);
-
-  curDescr = document.getElementById("s-choseninterior-descr");
-  curDescr.innerHTML = "Innenraum: <ul>";
-  for(i=0; i<values["tourism-interior"].length;i++)
-  {
-      curDescr.innerHTML += "<li>"+values["tourism-interior"][i].slice(values["tourism-interior"][i].indexOf('-',tourismDescriptorOffset)+1)+"</li>";
-  }
-  curDescr.innerHTML += "</li>";
 
   curDescr = document.getElementById("s-chosenextra-descr");
   curDescr.innerHTML = "Extras: <ul>";
