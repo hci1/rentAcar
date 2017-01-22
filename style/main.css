@@ -122,6 +122,22 @@ section{
     display: none;
     transition: .1s;
 }
+
+.overview-table{
+  width: 50%;
+  margin: auto;
+  border-collapse: collapse;
+}
+
+.overview-table, .overview-table th,.overview-table td{
+  border: 1px solid lightgray;
+  text-align: left;
+}
+
+.overview-table th p,.overview-table td p{
+  margin: 0px;
+}
+
 #navilinks{
     display: none;
     margin: 0 auto;
