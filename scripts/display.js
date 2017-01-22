@@ -383,32 +383,89 @@ function isEmpty(obj) {
 
 // this will update the payment sectionand is called from show(...) before opending the tab
 function updatePayment(){
-    var curImage, curDescr, newHTML;
+    var targetNode = document.getElementById("overview-default-div");
+    var newHTML;
 
-    curDescr = document.getElementById("chosencar-descr");
-    curDescr.innerHTML = "Auto: "+values.car.slice(values.car.indexOf('-')+1);
+    newHTML =
+    '<table class="overview-table">' +
+    ' <tbody>' +
+    '  <tr>' +
+    '   <th>' +
+    '    <p>Option</p>' +
+    '   </th>' +
+    '   <th>' +
+    '    <p>Ihre Auswahl</p>' +
+    '   </th>' +
+    '  <tr>';
 
-    curDescr = document.getElementById("choseninterior-descr");
-    curDescr.innerHTML = "Innenraum: <ul>";
+    // process car value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Auto</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+values.car.slice(values.car.indexOf('-')+1)+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    // process interior
+    newHTML += '<tr>';
+    newHTML += '<td><p>Innenraum</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>";
     for(i=0; i<values.interior.length;i++)
     {
-        curDescr.innerHTML += "<li>"+values.interior[i].slice(values.interior[i].indexOf('-')+1)+"</li>";
+        newHTML += "<p>"+values.interior[i].slice(values.interior[i].indexOf('-')+1)+"</p>";
     }
-    curDescr.innerHTML += "</li>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
 
-    curDescr = document.getElementById("chosenextra-descr");
-    curDescr.innerHTML = "Extras: <ul>";
+    //process extras
+    newHTML += '<tr>';
+    newHTML += '<td><p>Extras</p></td>';
+    newHTML += '<td>';
     for(i=0; i<values.extra.length;i++)
     {
-        curDescr.innerHTML += "<li>"+values.extra[i].slice(values.extra[i].indexOf('-')+1)+"</li>";
+        newHTML += "<p>"+values.extra[i].slice(values.extra[i].indexOf('-')+1)+"</p>";
     }
-    curDescr.innerHTML += "</li>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
 
-    curDescr = document.getElementById("chosenstart-descr");
-    curDescr.innerHTML = "Start: "+values.startDate+" ab "+values.startCity;
+    // process start city value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Abfahrtsort</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+values.startCity+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
 
-    curDescr = document.getElementById("chosenend-descr");
-    curDescr.innerHTML = "Ziel: "+values.endCity;
+    // process start date value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Abfahrtsdatum</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+values.startDate+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    // process destination city value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Ankunftsort</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+values.endCity+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    // add some price
+    newHTML += '<tr>';
+    newHTML += '<td><p>Gesamtkosten </p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+Math.floor((Math.random() * 100) + 20) +",95€</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    newHTML +=
+    ' </tbody>' +
+    '</table>';
+
+    targetNode.innerHTML = newHTML;
 }
 
 function updatePay(){
