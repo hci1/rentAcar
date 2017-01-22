@@ -583,22 +583,6 @@ function updatePay(){
     '</table>';
 
     targetNode.innerHTML = newHTML;
-
-
-
-  curDescr = document.getElementById("s-chosenextra-descr");
-  curDescr.innerHTML = "Extras: <ul>";
-  for(i=0; i<values["tourism-extra"].length;i++)
-  {
-      curDescr.innerHTML += "<li>"+values["tourism-extra"][i].slice(values["tourism-extra"][i].indexOf('-',tourismDescriptorOffset)+1)+"</li>";
-  }
-  curDescr.innerHTML += "</li>";
-
-  curDescr = document.getElementById("s-chosenstart-descr");
-  curDescr.innerHTML = "Start: "+values.startDate+" ab "+values.startCity;
-
-  curDescr = document.getElementById("s-chosenend-descr");
-  curDescr.innerHTML = "Ziel: "+values.endCity;
 }
 
 //return all neighbours of this ID
