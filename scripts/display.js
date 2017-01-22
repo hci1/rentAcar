@@ -305,76 +305,164 @@ function checkData(obj, neighbors, data) {
     }
     else {
         if (obj.className === "future") {
-            return;
+            if (!checkConditions(data))
+                return;
         }
-
-        if (data === "interior") {
-            if (isEmpty(values.car)) {
-                alert("Bitte wählen Sie ein Auto aus!");
-                return;
+        else {
+            if (data === "interior") {
+                if (isEmpty(values.car)) {
+                    alert("Bitte wählen Sie ein Auto aus!");
+                    return;
+                }
             }
-        }
-        else if (data === "seat") {
-            /*if (values.interior.length == 0) {
-                alert("Bitte wählen Sie mindestens einen Innenraum aus!");
-                return;
-             }*/
-        }
-        else if (data === "calendar") {
-            /*if (values.extra.length == 0) {
-                alert("Bitte wählen Sie mindestens ein Extra aus!");
-                return;
-             }*/
-        }
-        else if (data === "payment") {
-            if (isEmpty(document.getElementById("startcity").value)) {
-                alert("Bitte wählen Sie einen Start aus!");
-                return;
+            else if (data === "seat") {
+                /*if (values.interior.length == 0) {
+                 alert("Bitte wählen Sie mindestens einen Innenraum aus!");
+                 return;
+                 }*/
             }
-            else if (isEmpty(document.getElementById("startdate").value)) {
-                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
-                return;
+            else if (data === "calendar") {
+                /*if (values.extra.length == 0) {
+                 alert("Bitte wählen Sie mindestens ein Extra aus!");
+                 return;
+                 }*/
             }
-            else if (isEmpty(document.getElementById("endcity").value)) {
-                alert("Bitte wählen Sie ein Ziel aus!");
-                return;
+            else if (data === "payment") {
+                if (isEmpty(document.getElementById("startcity").value)) {
+                    alert("Bitte wählen Sie einen Start aus!");
+                    return;
+                }
+                else if (isEmpty(document.getElementById("startdate").value)) {
+                    alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                    return;
+                }
+                else if (isEmpty(document.getElementById("endcity").value)) {
+                    alert("Bitte wählen Sie ein Ziel aus!");
+                    return;
+                }
             }
-        }
-        else if (data === "success") {
-            if (isEmpty(values.payment)) {
-                alert("Bitte wählen Sie eine Zahlungsmethode aus!");
-                return;
+            else if (data === "success") {
+                if (isEmpty(values.payment)) {
+                    alert("Bitte wählen Sie eine Zahlungsmethode aus!");
+                    return;
+                }
             }
-        }
-        else if (data === "sights") {
-            if (isEmpty(values.city)) {
-                alert("Bitte wählen Sie eine Stadt aus!");
-                return;
+            else if (data === "sights") {
+                if (isEmpty(values.city)) {
+                    alert("Bitte wählen Sie eine Stadt aus!");
+                    return;
+                }
             }
-        }
-        else if (data === "details") {
-            if (values.sights.length === 0) {
-                alert("Bitte wählen Sie mindestens ein Sehenswürdigkeit aus!");
-                return;
+            else if (data === "details") {
+                if (values.sights.length == 0) {
+                    alert("Bitte wählen Sie mindestens ein Sehenswürdigkeit aus!");
+                    return;
+                }
             }
-        }
-        else if (data == "pay") {
-            if (isEmpty(document.getElementById("tourism-startcity").value)) {
-                alert("Bitte wählen Sie einen Start aus!");
-                return;
-            }
-            else if (isEmpty(document.getElementById("tourism-startdate").value)) {
-                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
-                return;
-            }
-            else if (isEmpty(document.getElementById("tourism-endcity").value)) {
-                alert("Bitte wählen Sie ein Ziel aus!");
-                return;
+            else if (data == "pay") {
+                if (isEmpty(document.getElementById("tourism-startcity").value)) {
+                    alert("Bitte wählen Sie einen Start aus!");
+                    return;
+                }
+                else if (isEmpty(document.getElementById("tourism-startdate").value)) {
+                    alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                    return;
+                }
+                else if (isEmpty(document.getElementById("tourism-endcity").value)) {
+                    alert("Bitte wählen Sie ein Ziel aus!");
+                    return;
+                }
             }
         }
 
         display(data);
     }
+}
+
+function checkConditions(data) {
+
+    switch (data) {
+        case "success":
+            if (isEmpty(values.payment)) {
+                alert("Bitte wählen Sie eine Zahlungsmethode aus!");
+                return false;
+            }
+        case "payment":
+            if (isEmpty(document.getElementById("startcity").value)) {
+                alert("Bitte wählen Sie einen Start aus!");
+                return false;
+            }
+            else if (isEmpty(document.getElementById("startdate").value)) {
+                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                return false;
+            }
+            else if (isEmpty(document.getElementById("endcity").value)) {
+                alert("Bitte wählen Sie ein Ziel aus!");
+                return false;
+            }
+        case "calendar":
+        /*if (values.extra.length == 0) {
+         alert("Bitte wählen Sie mindestens ein Extra aus!");
+         return false;
+         }*/
+        case "seat":
+        /*if (values.interior.length == 0) {
+         alert("Bitte wählen Sie mindestens einen Innenraum aus!");
+         return false;
+         }*/
+        case "interior":
+            if (isEmpty(values.type)) {
+                alert("Bitte wählen Sie einen Typ aus!");
+                return false;
+            }
+            if (isEmpty(values.car)) {
+                alert("Bitte wählen Sie ein Auto aus!");
+                return false;
+            }
+            break;
+        case "pay":
+
+            if (isEmpty(values["tourism-type"])) {
+                alert("Bitte wählen Sie einen Autotypen aus!");
+                return false;
+            }
+            if (isEmpty(values["tourism-car"])) {
+                alert("Bitte wählen Sie ein Auto aus!");
+                return false;
+            }
+            /*if (values["tourism-interior"].length == 0) {
+             alert("Bitte wählen Sie mindestens einen Innenraum aus!");
+             return false;
+             }*/
+            /*if (values["tourism-extra"].length == 0) {
+             alert("Bitte wählen Sie mindestens ein Extra aus!");
+             return false;
+             }*/
+            if (isEmpty(document.getElementById("tourism-startcity").value)) {
+                alert("Bitte wählen Sie einen Start aus!");
+                return false;
+            }
+            else if (isEmpty(document.getElementById("tourism-startdate").value)) {
+                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                return false;
+            }
+            else if (isEmpty(document.getElementById("tourism-endcity").value)) {
+                alert("Bitte wählen Sie ein Ziel aus!");
+                return false;
+            }
+        case "details":
+            if (values.sights.length == 0) {
+                alert("Bitte wählen Sie mindestens ein Sehenswürdigkeit aus!");
+                return false;
+            }
+        case "sights":
+            if (isEmpty(values.city)) {
+                alert("Bitte wählen Sie eine Stadt aus!");
+                return false;
+            }
+            break;
+    }
+    return true;
 }
 
 function isEmpty(obj) {
