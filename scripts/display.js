@@ -662,7 +662,7 @@ function change(optionID){
         }
     if(optionID === "city-München"){
                         document.getElementById("city-sights").innerHTML =
-                            '<a onclick="select(this.id)" id="sight-Nymphenschloss"><img src="media/options/sights/münchen schloss nymphen-1787977_1920.jpg" alt=""/><br><p>Nymphenschloss </p></a>' +
+                            '<a onclick="select(this.id)" id="sight-Nymphenschloss"><img src="media/options/sights/münchen schloss nymphen-1787977_1920.jpg" alt=""/><br><p>Schloss Nymphenburg </p></a>' +
                             '<a onclick="select(this.id)" id="sight-Marienplatz"><img src="media/options/sights/münchen marienplatz-1685882_1920.jpg" alt=""/><br><p>Marienplatz </p></a>' +
                             '<a onclick="select(this.id)" id="sight-Englischer Garten"><img src="media/options/sights/münchen englischer garten-953637_1920.jpg" alt=""/><br><p>Englischer Garten </p></a>' +
                             '<a onclick="select(this.id)" id="sight-Münchner Residenz"><img src="media/options/sights/münchner residenz.jpg" alt=""/><br><p>Münchner Residenz </p></a>';
