@@ -292,7 +292,7 @@ function checkData(obj, neighbors, data) {
              }*/
         }
         else if (step === "tfahrt") {
-            if (values["tourism-extra"].length === 0) {
+            if (values["tourism-extra"].length == 0) {
                 alert("Bitte wählen Sie mindestens ein Extra aus!");
                 return;
             }
@@ -305,71 +305,73 @@ function checkData(obj, neighbors, data) {
     }
     else {
         if (obj.className === "future") {
-            return;
+            if (!checkConditions(data))
+                return;
         }
-
-        if (data === "interior") {
-            if (isEmpty(values.car)) {
-                alert("Bitte wählen Sie ein Auto aus!");
-                return;
+        else {
+            if (data === "interior") {
+                if (isEmpty(values.car)) {
+                    alert("Bitte wählen Sie ein Auto aus!");
+                    return;
+                }
             }
-        }
-        else if (data === "seat") {
-            /*if (values.interior.length == 0) {
-                alert("Bitte wählen Sie mindestens einen Innenraum aus!");
-                return;
-             }*/
-        }
-        else if (data === "calendar") {
-            /*if (values.extra.length == 0) {
-                alert("Bitte wählen Sie mindestens ein Extra aus!");
-                return;
-             }*/
-        }
-        else if (data === "payment") {
-            if (isEmpty(document.getElementById("startcity").value)) {
-                alert("Bitte wählen Sie einen Start aus!");
-                return;
+            else if (data === "seat") {
+                /*if (values.interior.length == 0) {
+                 alert("Bitte wählen Sie mindestens einen Innenraum aus!");
+                 return;
+                 }*/
             }
-            else if (isEmpty(document.getElementById("startdate").value)) {
-                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
-                return;
+            else if (data === "calendar") {
+                /*if (values.extra.length == 0) {
+                 alert("Bitte wählen Sie mindestens ein Extra aus!");
+                 return;
+                 }*/
             }
-            else if (isEmpty(document.getElementById("endcity").value)) {
-                alert("Bitte wählen Sie ein Ziel aus!");
-                return;
+            else if (data === "payment") {
+                if (isEmpty(document.getElementById("startcity").value)) {
+                    alert("Bitte wählen Sie einen Start aus!");
+                    return;
+                }
+                else if (isEmpty(document.getElementById("startdate").value)) {
+                    alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                    return;
+                }
+                else if (isEmpty(document.getElementById("endcity").value)) {
+                    alert("Bitte wählen Sie ein Ziel aus!");
+                    return;
+                }
             }
-        }
-        else if (data === "success") {
-            if (isEmpty(values.payment)) {
-                alert("Bitte wählen Sie eine Zahlungsmethode aus!");
-                return;
+            else if (data === "success") {
+                if (isEmpty(values.payment)) {
+                    alert("Bitte wählen Sie eine Zahlungsmethode aus!");
+                    return;
+                }
             }
-        }
-        else if (data === "sights") {
-            if (isEmpty(values.city)) {
-                alert("Bitte wählen Sie eine Stadt aus!");
-                return;
+            else if (data === "sights") {
+                if (isEmpty(values.city)) {
+                    alert("Bitte wählen Sie eine Stadt aus!");
+                    return;
+                }
             }
-        }
-        else if (data === "details") {
-            if (values.sights.length === 0) {
-                alert("Bitte wählen Sie mindestens ein Sehenswürdigkeit aus!");
-                return;
+            else if (data === "details") {
+                if (values.sights.length == 0) {
+                    alert("Bitte wählen Sie mindestens ein Sehenswürdigkeit aus!");
+                    return;
+                }
             }
-        }
-        else if (data == "pay") {
-            if (isEmpty(document.getElementById("tourism-startcity").value)) {
-                alert("Bitte wählen Sie einen Start aus!");
-                return;
-            }
-            else if (isEmpty(document.getElementById("tourism-startdate").value)) {
-                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
-                return;
-            }
-            else if (isEmpty(document.getElementById("tourism-endcity").value)) {
-                alert("Bitte wählen Sie ein Ziel aus!");
-                return;
+            else if (data == "pay") {
+                if (isEmpty(document.getElementById("tourism-startcity").value)) {
+                    alert("Bitte wählen Sie einen Start aus!");
+                    return;
+                }
+                else if (isEmpty(document.getElementById("tourism-startdate").value)) {
+                    alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                    return;
+                }
+                else if (isEmpty(document.getElementById("tourism-endcity").value)) {
+                    alert("Bitte wählen Sie ein Ziel aus!");
+                    return;
+                }
             }
         }
 
@@ -377,95 +379,124 @@ function checkData(obj, neighbors, data) {
     }
 }
 
+function checkConditions(data) {
+
+    switch (data) {
+        case "success":
+            if (isEmpty(values.payment)) {
+                alert("Bitte wählen Sie eine Zahlungsmethode aus!");
+                return false;
+            }
+        case "payment":
+            if (isEmpty(document.getElementById("startcity").value)) {
+                alert("Bitte wählen Sie einen Start aus!");
+                return false;
+            }
+            else if (isEmpty(document.getElementById("startdate").value)) {
+                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                return false;
+            }
+            else if (isEmpty(document.getElementById("endcity").value)) {
+                alert("Bitte wählen Sie ein Ziel aus!");
+                return false;
+            }
+        case "calendar":
+        /*if (values.extra.length == 0) {
+         alert("Bitte wählen Sie mindestens ein Extra aus!");
+         return false;
+         }*/
+        case "seat":
+        /*if (values.interior.length == 0) {
+         alert("Bitte wählen Sie mindestens einen Innenraum aus!");
+         return false;
+         }*/
+        case "interior":
+            if (isEmpty(values.type)) {
+                alert("Bitte wählen Sie einen Typ aus!");
+                return false;
+            }
+            if (isEmpty(values.car)) {
+                alert("Bitte wählen Sie ein Auto aus!");
+                return false;
+            }
+            break;
+        case "pay":
+
+            if (isEmpty(values["tourism-type"])) {
+                alert("Bitte wählen Sie einen Autotypen aus!");
+                return false;
+            }
+            if (isEmpty(values["tourism-car"])) {
+                alert("Bitte wählen Sie ein Auto aus!");
+                return false;
+            }
+            /*if (values["tourism-interior"].length == 0) {
+             alert("Bitte wählen Sie mindestens einen Innenraum aus!");
+             return false;
+             }*/
+            /*if (values["tourism-extra"].length == 0) {
+             alert("Bitte wählen Sie mindestens ein Extra aus!");
+             return false;
+             }*/
+            if (isEmpty(document.getElementById("tourism-startcity").value)) {
+                alert("Bitte wählen Sie einen Start aus!");
+                return false;
+            }
+            else if (isEmpty(document.getElementById("tourism-startdate").value)) {
+                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                return false;
+            }
+            else if (isEmpty(document.getElementById("tourism-endcity").value)) {
+                alert("Bitte wählen Sie ein Ziel aus!");
+                return false;
+            }
+        case "details":
+            if (values.sights.length == 0) {
+                alert("Bitte wählen Sie mindestens ein Sehenswürdigkeit aus!");
+                return false;
+            }
+        case "sights":
+            if (isEmpty(values.city)) {
+                alert("Bitte wählen Sie eine Stadt aus!");
+                return false;
+            }
+            break;
+    }
+    return true;
+}
+
 function isEmpty(obj) {
-    return typeof obj === 'undefined' || obj === "" || obj === null;
+    return typeof obj === 'undefined' || obj == "" || obj === null;
 }
 
 // this will update the payment sectionand is called from show(...) before opending the tab
 function updatePayment(){
-    var targetNode = document.getElementById("overview-default-div");
-    var newHTML;
+    var curImage, curDescr;
 
-    newHTML =
-    '<table class="overview-table">' +
-    ' <tbody>' +
-    '  <tr>' +
-    '   <th>' +
-    '    <p>Option</p>' +
-    '   </th>' +
-    '   <th>' +
-    '    <p>Ihre Auswahl</p>' +
-    '   </th>' +
-    '  <tr>';
+    curDescr = document.getElementById("chosencar-descr");
+    curDescr.innerHTML = "Auto: " + values.car.slice(values.car.indexOf('-') + 1);
 
-    // process car value
-    newHTML += '<tr>';
-    newHTML += '<td><p>Auto</p></td>';
-    newHTML += '<td>';
-    newHTML += "<p>"+values.car.slice(values.car.indexOf('-')+1)+"</p>";
-    newHTML += '</td>';
-    newHTML += '</tr>';
-
-    // process interior
-    newHTML += '<tr>';
-    newHTML += '<td><p>Innenraum</p></td>';
-    newHTML += '<td>';
-    newHTML += "<p>";
+    curDescr = document.getElementById("choseninterior-descr");
+    curDescr.innerHTML = "Innenraum: <ul>";
     for(i=0; i<values.interior.length;i++)
     {
-        newHTML += "<p>"+values.interior[i].slice(values.interior[i].indexOf('-')+1)+"</p>";
+        curDescr.innerHTML += "<li>" + values.interior[i].slice(values.interior[i].indexOf('-') + 1) + "</li>";
     }
-    newHTML += '</td>';
-    newHTML += '</tr>';
+    curDescr.innerHTML += "</li>";
 
-    //process extras
-    newHTML += '<tr>';
-    newHTML += '<td><p>Extras</p></td>';
-    newHTML += '<td>';
+    curDescr = document.getElementById("chosenextra-descr");
+    curDescr.innerHTML = "Extras: <ul>";
     for(i=0; i<values.extra.length;i++)
     {
-        newHTML += "<p>"+values.extra[i].slice(values.extra[i].indexOf('-')+1)+"</p>";
+        curDescr.innerHTML += "<li>" + values.extra[i].slice(values.extra[i].indexOf('-') + 1) + "</li>";
     }
-    newHTML += '</td>';
-    newHTML += '</tr>';
+    curDescr.innerHTML += "</li>";
 
-    // process start city value
-    newHTML += '<tr>';
-    newHTML += '<td><p>Abfahrtsort</p></td>';
-    newHTML += '<td>';
-    newHTML += "<p>"+values.startCity+"</p>";
-    newHTML += '</td>';
-    newHTML += '</tr>';
+    curDescr = document.getElementById("chosenstart-descr");
+    curDescr.innerHTML = "Start: " + values.startDate + " ab " + values.startCity;
 
-    // process start date value
-    newHTML += '<tr>';
-    newHTML += '<td><p>Abfahrtsdatum</p></td>';
-    newHTML += '<td>';
-    newHTML += "<p>"+values.startDate+"</p>";
-    newHTML += '</td>';
-    newHTML += '</tr>';
-
-    // process destination city value
-    newHTML += '<tr>';
-    newHTML += '<td><p>Ankunftsort</p></td>';
-    newHTML += '<td>';
-    newHTML += "<p>"+values.endCity+"</p>";
-    newHTML += '</td>';
-    newHTML += '</tr>';
-
-    // add some price
-    newHTML += '<tr>';
-    newHTML += '<td><p>Gesamtkosten </p></td>';
-    newHTML += '<td>';
-    newHTML += "<p>"+Math.floor((Math.random() * 100) + 20) +",95€</p>";
-    newHTML += '</td>';
-    newHTML += '</tr>';
-
-    newHTML +=
-    ' </tbody>' +
-    '</table>';
-
-    targetNode.innerHTML = newHTML;
+    curDescr = document.getElementById("chosenend-descr");
+    curDescr.innerHTML = "Ziel: " + values.endCity;
 }
 
 function updatePay(){
@@ -596,83 +627,83 @@ function change(optionID){
                             '<a onclick="select(this.id)" id="car-BMW Cabrio"><img src="media/options/cars/sports-car-1349147_1920.jpg" alt=""/><br><p>BMW Cabrio </p></a>';
         }
     if(optionID === "type-transporter"){
-                document.getElementById("car-model").innerHTML =
-                            '<a onclick="select(this.id)" id="car-Renault Trafic"><img src="media/options/cars/2014_Renault_Trafic_L2_H1_-_Fl.jpg" alt=""/><br><p>Renault Trafic </p></a>' +
-                            '<a onclick="select(this.id)" id="car-Renault Kangoo"><img src="media/options/cars/renault-Kangoovan-F61-ph2-overview-Design.jpg.ximg.l_full_m.smart.jpg" alt=""/><br><p>Renault Kangoo </p></a>' +
-                            '<a onclick="select(this.id)" id="car-Renault Master"><img src="media/options/cars/renault-master-1024x768-1.jpg" alt=""/><br><p>Renault Master </p></a>' +
-                            '<a onclick="select(this.id)" id="car-VW Crafter"><img src="media/options/cars/volkswagen-crafter-2010-models-39255.jpg" alt=""/><br><p>VW Crafter </p></a>';
+        document.getElementById("car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="car-Renault Trafic"><img src="media/options/cars/2014_Renault_Trafic_L2_H1_-_Fl.jpg" alt=""/><br><p>Renault Trafic </p></a>\
+                            <a onclick="select(this.id)" id="car-Renault Kangoo"><img src="media/options/cars/renault-Kangoovan-F61-ph2-overview-Design.jpg.ximg.l_full_m.smart.jpg" alt=""/><br><p>Renault Kangoo </p></a>\
+                            <a onclick="select(this.id)" id="car-Renault Master"><img src="media/options/cars/renault-master-1024x768-1.jpg" alt=""/><br><p>Renault Master </p></a>\
+                            <a onclick="select(this.id)" id="car-VW Crafter"><img src="media/options/cars/volkswagen-crafter-2010-models-39255.jpg" alt=""/><br><p>VW Crafter </p></a>';
         }
     if(optionID === "type-bus"){
-                document.getElementById("car-model").innerHTML =
-                            '<a onclick="select(this.id)" id="car-Elektro Bus"><img src="media/options/cars/collective-435584_1920.jpg" alt=""/><br><p>Elektro-Bus </p></a>' +
-                            '<a onclick="select(this.id)" id="car-Doppeldecker Schwarz"><img src="media/options/cars/edinburgh-1688490_1920.jpg" alt=""/><br><p>Doppeldecker Schwarz</p></a>' +
-                            '<a onclick="select(this.id)" id="car-Doppeldecker Rot"><img src="media/options/cars/london-1567903_1920.jpg" alt=""/><br><p>Doppeldecker Rot</p></a>' +
-                            '<a onclick="select(this.id)" id="car-VW Bus"><img src="media/options/cars/vw-camper-336606_1920.jpg" alt=""/><br><p>VW-Bus </p></a>';
+        document.getElementById("car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="car-Elektro Bus"><img src="media/options/cars/collective-435584_1920.jpg" alt=""/><br><p>Elektro-Bus </p></a>\
+                            <a onclick="select(this.id)" id="car-Doppeldecker Schwarz"><img src="media/options/cars/edinburgh-1688490_1920.jpg" alt=""/><br><p>Doppeldecker Schwarz</p></a>\
+                            <a onclick="select(this.id)" id="car-Doppeldecker Rot"><img src="media/options/cars/london-1567903_1920.jpg" alt=""/><br><p>Doppeldecker Rot</p></a>\
+                            <a onclick="select(this.id)" id="car-VW Bus"><img src="media/options/cars/vw-camper-336606_1920.jpg" alt=""/><br><p>VW-Bus </p></a>';
         }
     if(optionID === "type-truck"){
-                document.getElementById("car-model").innerHTML =
-                            '<a onclick="select(this.id)" id="car-Kamaz"><img src="media/options/cars/kamaz-835535_1280.jpg" alt=""/><br><p>Kamaz </p></a>' +
-                            '<a onclick="select(this.id)" id="car-Ford"><img src="media/options/cars/truck-1332564_1920.jpg" alt=""/><br><p>Ford </p></a>' +
-                            '<a onclick="select(this.id)" id="car-Weißer Tieflader"><img src="media/options/cars/truck-1565478_1920.jpg" alt=""/><br><p>Weißer Tieflader </p></a>' +
-                            '<a onclick="select(this.id)" id="car-Volvo"><img src="media/options/cars/volvo-1201106_1920.jpg" alt=""/><br><p>Volvo </p></a>';
+        document.getElementById("car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="car-Kamaz"><img src="media/options/cars/kamaz-835535_1280.jpg" alt=""/><br><p>Kamaz </p></a>\
+                            <a onclick="select(this.id)" id="car-Ford"><img src="media/options/cars/truck-1332564_1920.jpg" alt=""/><br><p>Ford </p></a>\
+                            <a onclick="select(this.id)" id="car-Weißer Tieflader"><img src="media/options/cars/truck-1565478_1920.jpg" alt=""/><br><p>Weißer Tieflader </p></a>\
+                            <a onclick="select(this.id)" id="car-Volvo"><img src="media/options/cars/volvo-1201106_1920.jpg" alt=""/><br><p>Volvo </p></a>';
         }
 
     if(optionID === "tourism-type-car"){
-                document.getElementById("tourism-car-model").innerHTML =
-                            '<a onclick="select(this.id)" id="tourism-car-Mercedes"><img src="media/options/cars/road-1762473_1920.jpg" alt=""/><br><p>Mercedes </p></a>' +
-                            '<a onclick="select(this.id)" id="tourism-car-Mercedes SUV"><img src="media/options/cars/mercedes-1782740_1280.jpg" alt=""/><br><p>Mercedes SUV </p></a>' +
-                            '<a onclick="select(this.id)" id="tourism-car-Range Rover"><img src="media/options/cars/range-rover-1806931_1920.jpg" alt=""/><br><p>Range Rover </p></a>' +
-                            '<a onclick="select(this.id)" id="tourism-car-BMW Cabrio"><img src="media/options/cars/sports-car-1349147_1920.jpg" alt=""/><br><p>BMW Cabrio </p></a>';
+        document.getElementById("tourism-car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="tourism-car-Mercedes"><img src="media/options/cars/road-1762473_1920.jpg" alt=""/><br><p>Mercedes </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-Mercedes SUV"><img src="media/options/cars/mercedes-1782740_1280.jpg" alt=""/><br><p>Mercedes SUV </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-Range Rover"><img src="media/options/cars/range-rover-1806931_1920.jpg" alt=""/><br><p>Range Rover </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-BMW Cabrio"><img src="media/options/cars/sports-car-1349147_1920.jpg" alt=""/><br><p>BMW Cabrio </p></a>';
         }
     if(optionID === "tourism-type-transporter"){
-                document.getElementById("tourism-car-model").innerHTML =
-                            '<a onclick="select(this.id)" id="tourism-car-Renault Trafic"><img src="media/options/cars/2014_Renault_Trafic_L2_H1_-_Fl.jpg" alt=""/><br><p>Renault Trafic </p></a>' +
-                            '<a onclick="select(this.id)" id="tourism-car-Renault Kangoo"><img src="media/options/cars/renault-Kangoovan-F61-ph2-overview-Design.jpg.ximg.l_full_m.smart.jpg" alt=""/><br><p>Renault Kangoo </p></a>' +
-                            '<a onclick="select(this.id)" id="tourism-car-Renault Master"><img src="media/options/cars/renault-master-1024x768-1.jpg" alt=""/><br><p>Renault Master </p></a>' +
-                            '<a onclick="select(this.id)" id="tourism-car-VW-Crafter"><img src="media/options/cars/volkswagen-crafter-2010-models-39255.jpg" alt=""/><br><p>VW Crafter </p></a>';
+        document.getElementById("tourism-car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="tourism-car-Renault Trafic"><img src="media/options/cars/2014_Renault_Trafic_L2_H1_-_Fl.jpg" alt=""/><br><p>Renault Trafic </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-Renault Kangoo"><img src="media/options/cars/renault-Kangoovan-F61-ph2-overview-Design.jpg.ximg.l_full_m.smart.jpg" alt=""/><br><p>Renault Kangoo </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-Renault Master"><img src="media/options/cars/renault-master-1024x768-1.jpg" alt=""/><br><p>Renault Master </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-VW-Crafter"><img src="media/options/cars/volkswagen-crafter-2010-models-39255.jpg" alt=""/><br><p>VW Crafter </p></a>';
         }
     if(optionID === "tourism-type-bus"){
-                document.getElementById("tourism-car-model").innerHTML =
-                            '<a onclick="select(this.id)" id="tourism-car-Elektro Bus"><img src="media/options/cars/collective-435584_1920.jpg" alt=""/><br><p>Elektro-Bus </p></a>' +
-                            '<a onclick="select(this.id)" id="tourism-car-Doppeldecker Schwarz"><img src="media/options/cars/edinburgh-1688490_1920.jpg" alt=""/><br><p>Doppeldecker Schwarz</p></a>' +
-                            '<a onclick="select(this.id)" id="tourism-car-Doppeldecker Rot"><img src="media/options/cars/london-1567903_1920.jpg" alt=""/><br><p>Doppeldecker Rot</p></a>' +
-                            '<a onclick="select(this.id)" id="tourism-car-VW Bus"><img src="media/options/cars/vw-camper-336606_1920.jpg" alt=""/><br><p>VW-Bus </p></a>';
+        document.getElementById("tourism-car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="tourism-car-Elektro Bus"><img src="media/options/cars/collective-435584_1920.jpg" alt=""/><br><p>Elektro-Bus </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-Doppeldecker Schwarz"><img src="media/options/cars/edinburgh-1688490_1920.jpg" alt=""/><br><p>Doppeldecker Schwarz</p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-Doppeldecker Rot"><img src="media/options/cars/london-1567903_1920.jpg" alt=""/><br><p>Doppeldecker Rot</p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-VW Bus"><img src="media/options/cars/vw-camper-336606_1920.jpg" alt=""/><br><p>VW-Bus </p></a>';
         }
     if(optionID === "tourism-type-truck"){
-                document.getElementById("tourism-car-model").innerHTML =
-                            '<a onclick="select(this.id)" id="tourism-car-Kamaz"><img src="media/options/cars/kamaz-835535_1280.jpg" alt=""/><br><p>Kamaz </p></a>' +
-                            '<a onclick="select(this.id)" id="tourism-car-Ford"><img src="media/options/cars/truck-1332564_1920.jpg" alt=""/><br><p>Ford </p></a>' +
-                            '<a onclick="select(this.id)" id="tourism-car-Weißer Tieflader"><img src="media/options/cars/truck-1565478_1920.jpg" alt=""/><br><p>Weißer Tieflader </p></a>' +
-                            '<a onclick="select(this.id)" id="tourism-car-Volvo"><img src="media/options/cars/volvo-1201106_1920.jpg" alt=""/><br><p>Volvo </p></a>';
+        document.getElementById("tourism-car-model").innerHTML = '\
+                            <a onclick="select(this.id)" id="tourism-car-Kamaz"><img src="media/options/cars/kamaz-835535_1280.jpg" alt=""/><br><p>Kamaz </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-Ford"><img src="media/options/cars/truck-1332564_1920.jpg" alt=""/><br><p>Ford </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-Weißer Tieflader"><img src="media/options/cars/truck-1565478_1920.jpg" alt=""/><br><p>Weißer Tieflader </p></a>\
+                            <a onclick="select(this.id)" id="tourism-car-Volvo"><img src="media/options/cars/volvo-1201106_1920.jpg" alt=""/><br><p>Volvo </p></a>';
         }
 
     if(optionID === "city-Berlin1"){
-                    document.getElementById("city-sights").innerHTML =
-                            '<a onclick="select(this.id)" id="sight-Brandenburger Tor"><img src="media/options/sights/berlin brandenburg-gate-1041803_1920.jpg" alt=""/><br><p>Brandenburger Tor </p></a>' +
-                            '<a onclick="select(this.id)" id="sight-Kanzleramt"><img src="media/options/sights/berlin kanzleramt-637999_1920.jpg" alt=""/><br><p>Kanzleramt </p></a>' +
-                            '<a onclick="select(this.id)" id="sight-Mauer"><img src="media/options/sights/berlin mauer-207136_1920.jpg" alt=""/><br><p>Mauer </p></a>' +
-                            '<a onclick="select(this.id)" id="sight-Museumsinsel"><img src="media/options/sights/berlin museumsinsel-450643_1280.jpg" alt=""/><br><p>Museumsinsel </p></a>';
+        document.getElementById("city-sights").innerHTML = '\
+                            <a onclick="select(this.id)" id="sight-Brandenburger Tor"><img src="media/options/sights/berlin brandenburg-gate-1041803_1920.jpg" alt=""/><br><p>Brandenburger Tor </p></a>\
+                            <a onclick="select(this.id)" id="sight-Kanzleramt"><img src="media/options/sights/berlin kanzleramt-637999_1920.jpg" alt=""/><br><p>Kanzleramt </p></a>\
+                            <a onclick="select(this.id)" id="sight-Mauer"><img src="media/options/sights/berlin mauer-207136_1920.jpg" alt=""/><br><p>Mauer </p></a>\
+                            <a onclick="select(this.id)" id="sight-Museumsinsel"><img src="media/options/sights/berlin museumsinsel-450643_1280.jpg" alt=""/><br><p>Museumsinsel </p></a>';
         }
     if(optionID === "city-Hannover"){
-                        document.getElementById("city-sights").innerHTML =
-                            '<a onclick="select(this.id)" id="sight-Neuees Rathaus"><img src="media/options/sights/hannover neues rathaus-1718110_1920.jpg" alt=""/><br><p>Neues Rathaus </p></a>' +
-                            '<a onclick="select(this.id)" id="sight-Herrenhäuser Gärten"><img src="media/options/sights/hannover gärten-1557381_1920.jpg" alt=""/><br><p>Herrenhäuser Gärten </p></a>' +
-                            '<a onclick="select(this.id)" id="sight-Altstadt"><img src="media/options/sights/hanover alt stadt-329664_1920.jpg" alt=""/><br><p>Altstadt </p></a>' +
-                            '<a onclick="select(this.id)" id="sight-Zoo"><img src="media/options/sights/zoo-hannover-1511967_1920.jpg" alt=""/><br><p>Zoo </p></a>';
+        document.getElementById("city-sights").innerHTML = '\
+                            <a onclick="select(this.id)" id="sight-Neuees Rathaus"><img src="media/options/sights/hannover neues rathaus-1718110_1920.jpg" alt=""/><br><p>Neues Rathaus </p></a>\
+                            <a onclick="select(this.id)" id="sight-Herrenhäuser Gärten"><img src="media/options/sights/hannover gärten-1557381_1920.jpg" alt=""/><br><p>Herrenhäuser Gärten </p></a>\
+                            <a onclick="select(this.id)" id="sight-Altstadt"><img src="media/options/sights/hanover alt stadt-329664_1920.jpg" alt=""/><br><p>Altstadt </p></a>\
+                            <a onclick="select(this.id)" id="sight-Zoo"><img src="media/options/sights/zoo-hannover-1511967_1920.jpg" alt=""/><br><p>Zoo </p></a>';
         }
     if(optionID === "city-München"){
-                        document.getElementById("city-sights").innerHTML =
-                            '<a onclick="select(this.id)" id="sight-Nymphenschloss"><img src="media/options/sights/münchen schloss nymphen-1787977_1920.jpg" alt=""/><br><p>Nymphenschloss </p></a>' +
-                            '<a onclick="select(this.id)" id="sight-Marienplatz"><img src="media/options/sights/münchen marienplatz-1685882_1920.jpg" alt=""/><br><p>Marienplatz </p></a>' +
-                            '<a onclick="select(this.id)" id="sight-Englischer Garten"><img src="media/options/sights/münchen englischer garten-953637_1920.jpg" alt=""/><br><p>Englischer Garten </p></a>' +
-                            '<a onclick="select(this.id)" id="sight-Münchner Residenz"><img src="media/options/sights/münchner residenz.jpg" alt=""/><br><p>Münchner Residenz </p></a>';
+        document.getElementById("city-sights").innerHTML = '\
+                            <a onclick="select(this.id)" id="sight-Nymphenschloss"><img src="media/options/sights/münchen schloss nymphen-1787977_1920.jpg" alt=""/><br><p>Nymphenschloss </p></a>\
+                            <a onclick="select(this.id)" id="sight-Marienplatz"><img src="media/options/sights/münchen marienplatz-1685882_1920.jpg" alt=""/><br><p>Marienplatz </p></a>\
+                            <a onclick="select(this.id)" id="sight-Englischer Garten"><img src="media/options/sights/münchen englischer garten-953637_1920.jpg" alt=""/><br><p>Englischer Garten </p></a>\
+                            <a onclick="select(this.id)" id="sight-Münchner Residenz"><img src="media/options/sights/münchner residenz.jpg" alt=""/><br><p>Münchner Residenz </p></a>';
         }
     if(optionID === "city-Dresden"){
-                        document.getElementById("city-sights").innerHTML =
-                            '<a onclick="select(this.id)" id="sight-Opernhaus"><img src="media/options/sights/dresden semper-opera-house-1216572_1280.jpg" alt=""/><br><p>Opernhaus </p></a>' +
-                            '<a onclick="select(this.id)" id="sight-Frauenkirche"><img src="media/options/sights/dresden frauenkirche-1252472_1920.jpg" alt=""/><br><p>Frauenkirche </p></a>' +
-                            '<a onclick="select(this.id)" id="sight-Hofkirche"><img src="media/options/sights/dresden hofkirche-1541689_1920.jpg" alt=""/><br><p>Hofkirche </p></a>' +
-                            '<a onclick="select(this.id)" id="sight-Zwinger"><img src="media/options/sights/dresden zwinger-956211_1920.jpg" alt=""/><br><p>Zwinger </p></a>';
+        document.getElementById("city-sights").innerHTML = '\
+                            <a onclick="select(this.id)" id="sight-Opernhaus"><img src="media/options/sights/dresden semper-opera-house-1216572_1280.jpg" alt=""/><br><p>Opernhaus </p></a>\
+                            <a onclick="select(this.id)" id="sight-Frauenkirche"><img src="media/options/sights/dresden frauenkirche-1252472_1920.jpg" alt=""/><br><p>Frauenkirche </p></a>\
+                            <a onclick="select(this.id)" id="sight-Hofkirche"><img src="media/options/sights/dresden hofkirche-1541689_1920.jpg" alt=""/><br><p>Hofkirche </p></a>\
+                            <a onclick="select(this.id)" id="sight-Zwinger"><img src="media/options/sights/dresden zwinger-956211_1920.jpg" alt=""/><br><p>Zwinger </p></a>';
         }
 }
 
