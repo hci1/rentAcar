@@ -305,76 +305,164 @@ function checkData(obj, neighbors, data) {
     }
     else {
         if (obj.className === "future") {
-            return;
+            if (!checkConditions(data))
+                return;
         }
-
-        if (data === "interior") {
-            if (isEmpty(values.car)) {
-                alert("Bitte wählen Sie ein Auto aus!");
-                return;
+        else {
+            if (data === "interior") {
+                if (isEmpty(values.car)) {
+                    alert("Bitte wählen Sie ein Auto aus!");
+                    return;
+                }
             }
-        }
-        else if (data === "seat") {
-            /*if (values.interior.length == 0) {
-                alert("Bitte wählen Sie mindestens einen Innenraum aus!");
-                return;
-             }*/
-        }
-        else if (data === "calendar") {
-            /*if (values.extra.length == 0) {
-                alert("Bitte wählen Sie mindestens ein Extra aus!");
-                return;
-             }*/
-        }
-        else if (data === "payment") {
-            if (isEmpty(document.getElementById("startcity").value)) {
-                alert("Bitte wählen Sie einen Start aus!");
-                return;
+            else if (data === "seat") {
+                /*if (values.interior.length == 0) {
+                 alert("Bitte wählen Sie mindestens einen Innenraum aus!");
+                 return;
+                 }*/
             }
-            else if (isEmpty(document.getElementById("startdate").value)) {
-                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
-                return;
+            else if (data === "calendar") {
+                /*if (values.extra.length == 0) {
+                 alert("Bitte wählen Sie mindestens ein Extra aus!");
+                 return;
+                 }*/
             }
-            else if (isEmpty(document.getElementById("endcity").value)) {
-                alert("Bitte wählen Sie ein Ziel aus!");
-                return;
+            else if (data === "payment") {
+                if (isEmpty(document.getElementById("startcity").value)) {
+                    alert("Bitte wählen Sie einen Start aus!");
+                    return;
+                }
+                else if (isEmpty(document.getElementById("startdate").value)) {
+                    alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                    return;
+                }
+                else if (isEmpty(document.getElementById("endcity").value)) {
+                    alert("Bitte wählen Sie ein Ziel aus!");
+                    return;
+                }
             }
-        }
-        else if (data === "success") {
-            if (isEmpty(values.payment)) {
-                alert("Bitte wählen Sie eine Zahlungsmethode aus!");
-                return;
+            else if (data === "success") {
+                if (isEmpty(values.payment)) {
+                    alert("Bitte wählen Sie eine Zahlungsmethode aus!");
+                    return;
+                }
             }
-        }
-        else if (data === "sights") {
-            if (isEmpty(values.city)) {
-                alert("Bitte wählen Sie eine Stadt aus!");
-                return;
+            else if (data === "sights") {
+                if (isEmpty(values.city)) {
+                    alert("Bitte wählen Sie eine Stadt aus!");
+                    return;
+                }
             }
-        }
-        else if (data === "details") {
-            if (values.sights.length === 0) {
-                alert("Bitte wählen Sie mindestens ein Sehenswürdigkeit aus!");
-                return;
+            else if (data === "details") {
+                if (values.sights.length == 0) {
+                    alert("Bitte wählen Sie mindestens ein Sehenswürdigkeit aus!");
+                    return;
+                }
             }
-        }
-        else if (data == "pay") {
-            if (isEmpty(document.getElementById("tourism-startcity").value)) {
-                alert("Bitte wählen Sie einen Start aus!");
-                return;
-            }
-            else if (isEmpty(document.getElementById("tourism-startdate").value)) {
-                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
-                return;
-            }
-            else if (isEmpty(document.getElementById("tourism-endcity").value)) {
-                alert("Bitte wählen Sie ein Ziel aus!");
-                return;
+            else if (data == "pay") {
+                if (isEmpty(document.getElementById("tourism-startcity").value)) {
+                    alert("Bitte wählen Sie einen Start aus!");
+                    return;
+                }
+                else if (isEmpty(document.getElementById("tourism-startdate").value)) {
+                    alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                    return;
+                }
+                else if (isEmpty(document.getElementById("tourism-endcity").value)) {
+                    alert("Bitte wählen Sie ein Ziel aus!");
+                    return;
+                }
             }
         }
 
         display(data);
     }
+}
+
+function checkConditions(data) {
+
+    switch (data) {
+        case "success":
+            if (isEmpty(values.payment)) {
+                alert("Bitte wählen Sie eine Zahlungsmethode aus!");
+                return false;
+            }
+        case "payment":
+            if (isEmpty(document.getElementById("startcity").value)) {
+                alert("Bitte wählen Sie einen Start aus!");
+                return false;
+            }
+            else if (isEmpty(document.getElementById("startdate").value)) {
+                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                return false;
+            }
+            else if (isEmpty(document.getElementById("endcity").value)) {
+                alert("Bitte wählen Sie ein Ziel aus!");
+                return false;
+            }
+        case "calendar":
+        /*if (values.extra.length == 0) {
+         alert("Bitte wählen Sie mindestens ein Extra aus!");
+         return false;
+         }*/
+        case "seat":
+        /*if (values.interior.length == 0) {
+         alert("Bitte wählen Sie mindestens einen Innenraum aus!");
+         return false;
+         }*/
+        case "interior":
+            if (isEmpty(values.type)) {
+                alert("Bitte wählen Sie einen Typ aus!");
+                return false;
+            }
+            if (isEmpty(values.car)) {
+                alert("Bitte wählen Sie ein Auto aus!");
+                return false;
+            }
+            break;
+        case "pay":
+
+            if (isEmpty(values["tourism-type"])) {
+                alert("Bitte wählen Sie einen Autotypen aus!");
+                return false;
+            }
+            if (isEmpty(values["tourism-car"])) {
+                alert("Bitte wählen Sie ein Auto aus!");
+                return false;
+            }
+            /*if (values["tourism-interior"].length == 0) {
+             alert("Bitte wählen Sie mindestens einen Innenraum aus!");
+             return false;
+             }*/
+            /*if (values["tourism-extra"].length == 0) {
+             alert("Bitte wählen Sie mindestens ein Extra aus!");
+             return false;
+             }*/
+            if (isEmpty(document.getElementById("tourism-startcity").value)) {
+                alert("Bitte wählen Sie einen Start aus!");
+                return false;
+            }
+            else if (isEmpty(document.getElementById("tourism-startdate").value)) {
+                alert("Bitte wählen Sie einen Startzeitpunkt aus!");
+                return false;
+            }
+            else if (isEmpty(document.getElementById("tourism-endcity").value)) {
+                alert("Bitte wählen Sie ein Ziel aus!");
+                return false;
+            }
+        case "details":
+            if (values.sights.length == 0) {
+                alert("Bitte wählen Sie mindestens ein Sehenswürdigkeit aus!");
+                return false;
+            }
+        case "sights":
+            if (isEmpty(values.city)) {
+                alert("Bitte wählen Sie eine Stadt aus!");
+                return false;
+            }
+            break;
+    }
+    return true;
 }
 
 function isEmpty(obj) {
@@ -433,7 +521,7 @@ function updatePayment(){
     newHTML += '<tr>';
     newHTML += '<td><p>Abfahrtsort</p></td>';
     newHTML += '<td>';
-    newHTML += "<p>"+values.startCity+"</p>";
+    newHTML += "<p>"+document.getElementById("startcity").value+"</p>";
     newHTML += '</td>';
     newHTML += '</tr>';
 
@@ -441,7 +529,7 @@ function updatePayment(){
     newHTML += '<tr>';
     newHTML += '<td><p>Abfahrtsdatum</p></td>';
     newHTML += '<td>';
-    newHTML += "<p>"+values.startDate+"</p>";
+    newHTML += "<p>"+document.getElementById("startdate").value+"</p>";
     newHTML += '</td>';
     newHTML += '</tr>';
 
@@ -449,7 +537,7 @@ function updatePayment(){
     newHTML += '<tr>';
     newHTML += '<td><p>Ankunftsort</p></td>';
     newHTML += '<td>';
-    newHTML += "<p>"+values.endCity+"</p>";
+    newHTML += "<p>"+document.getElementById("endcity").value+"</p>";
     newHTML += '</td>';
     newHTML += '</tr>';
 
@@ -469,48 +557,120 @@ function updatePayment(){
 }
 
 function updatePay(){
-  var curImage, curDescr;
+    var targetNode = document.getElementById("overview-sight-div");
+    var newHTML;
 
-  //when we are searching a string for an occurence of '-' to determine, when the actual property name starts,
-  //we need to ignore the first - after 'tourism-'. therefore we may skip tourismDescriptorOffset
-  //chars on indexOf(...)-search.
-  var tourismDescriptorOffset = "tourism-".length;
+    newHTML =
+    '<table class="overview-table">' +
+    ' <tbody>' +
+    '  <tr>' +
+    '   <th>' +
+    '    <p>Option</p>' +
+    '   </th>' +
+    '   <th>' +
+    '    <p>Ihre Auswahl</p>' +
+    '   </th>' +
+    '  <tr>' +
+    '  <tr>' +
+    '   <td>' +
+    '    <p>Service</p>' +
+    '   </td>' +
+    '   <td>' +
+    '    <p>Städtetour</p>' +
+    '   </td>' +
+    '  <tr>';
 
-  curDescr = document.getElementById("s-chosencity-descr");
-  curDescr.innerHTML = "Stadt: "+values.city.slice(values.city.indexOf('-')+1);
+    //when we are searching a string for an occurence of '-' to determine, when the actual property name starts,
+    //we need to ignore the first - after 'tourism-'. therefore we may skip tourismDescriptorOffset
+    //chars on indexOf(...)-search.
+    var tourismDescriptorOffset = "tourism-".length;
 
-  curDescr = document.getElementById("s-chosensights-descr");
-  curDescr.innerHTML = "Sehenswürdigkeiten: <ul>";
-  for(i=0; i<values.sights.length;i++)
-  {
-      curDescr.innerHTML += "<li>"+values.sights[i].slice(values.sights[i].indexOf('-')+1)+"</li>";
-  }
-  curDescr.innerHTML += "</li>";
+    // process city value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Tour</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+values.city.slice(values.city.indexOf('-')+1)+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
 
-  curDescr = document.getElementById("s-chosencar-descr");
-  curDescr.innerHTML = "Auto: "+values["tourism-car"].slice(values["tourism-car"].indexOf('-',tourismDescriptorOffset)+1);
+    // process sights value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Sehenswürdigkeiten</p></td>';
+    newHTML += '<td>';
+    for(i=0; i<values.sights.length;i++)
+    {
+        newHTML += "<p>"+values.sights[i].slice(values.sights[i].indexOf('-')+1)+"</p>";
+    }
+    newHTML += '</td>';
+    newHTML += '</tr>';
 
-  curDescr = document.getElementById("s-choseninterior-descr");
-  curDescr.innerHTML = "Innenraum: <ul>";
-  for(i=0; i<values["tourism-interior"].length;i++)
-  {
-      curDescr.innerHTML += "<li>"+values["tourism-interior"][i].slice(values["tourism-interior"][i].indexOf('-',tourismDescriptorOffset)+1)+"</li>";
-  }
-  curDescr.innerHTML += "</li>";
+    // process car value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Auto</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+values["tourism-car"].slice(values["tourism-car"].indexOf('-',tourismDescriptorOffset)+1)+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
 
-  curDescr = document.getElementById("s-chosenextra-descr");
-  curDescr.innerHTML = "Extras: <ul>";
-  for(i=0; i<values["tourism-extra"].length;i++)
-  {
-      curDescr.innerHTML += "<li>"+values["tourism-extra"][i].slice(values["tourism-extra"][i].indexOf('-',tourismDescriptorOffset)+1)+"</li>";
-  }
-  curDescr.innerHTML += "</li>";
+    // process interior
+    newHTML += '<tr>';
+    newHTML += '<td><p>Innenraum</p></td>';
+    newHTML += '<td>';
+    for(i=0; i<values["tourism-interior"].length;i++)
+    {
+        newHTML += "<p>"+values["tourism-interior"][i].slice(values["tourism-interior"][i].indexOf('-',tourismDescriptorOffset)+1)+"</p>";
+    }
+    newHTML += '</td>';
+    newHTML += '</tr>';
 
-  curDescr = document.getElementById("s-chosenstart-descr");
-  curDescr.innerHTML = "Start: "+values.startDate+" ab "+values.startCity;
+    //process extras
+    newHTML += '<tr>';
+    newHTML += '<td><p>Extras</p></td>';
+    newHTML += '<td>';
+    for(i=0; i<values["tourism-extra"].length;i++)
+    {
+        newHTML += "<p>"+values["tourism-extra"][i].slice(values["tourism-extra"][i].indexOf('-',tourismDescriptorOffset)+1)+"</p>";
+    }
+    newHTML += '</td>';
+    newHTML += '</tr>';
 
-  curDescr = document.getElementById("s-chosenend-descr");
-  curDescr.innerHTML = "Ziel: "+values.endCity;
+    // process start city value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Abfahrtsort</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+document.getElementById("tourism-startcity").value+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    // process start date value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Abfahrtsdatum</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+document.getElementById("tourism-startdate").value+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    // process destination city value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Ankunftsort</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+document.getElementById("tourism-endcity").value+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    // add some price
+    newHTML += '<tr>';
+    newHTML += '<td><p>Gesamtkosten </p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+Math.floor((Math.random() * 100) + 40) +",95€</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    newHTML +=
+    ' </tbody>' +
+    '</table>';
+
+    targetNode.innerHTML = newHTML;
 }
 
 //return all neighbours of this ID
