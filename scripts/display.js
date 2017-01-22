@@ -433,7 +433,7 @@ function updatePayment(){
     newHTML += '<tr>';
     newHTML += '<td><p>Abfahrtsort</p></td>';
     newHTML += '<td>';
-    newHTML += "<p>"+values.startCity+"</p>";
+    newHTML += "<p>"+document.getElementById("startcity").value+"</p>";
     newHTML += '</td>';
     newHTML += '</tr>';
 
@@ -441,7 +441,7 @@ function updatePayment(){
     newHTML += '<tr>';
     newHTML += '<td><p>Abfahrtsdatum</p></td>';
     newHTML += '<td>';
-    newHTML += "<p>"+values.startDate+"</p>";
+    newHTML += "<p>"+document.getElementById("startdate").value+"</p>";
     newHTML += '</td>';
     newHTML += '</tr>';
 
@@ -449,7 +449,7 @@ function updatePayment(){
     newHTML += '<tr>';
     newHTML += '<td><p>Ankunftsort</p></td>';
     newHTML += '<td>';
-    newHTML += "<p>"+values.endCity+"</p>";
+    newHTML += "<p>"+document.getElementById("endcity").value+"</p>";
     newHTML += '</td>';
     newHTML += '</tr>';
 
@@ -469,12 +469,124 @@ function updatePayment(){
 }
 
 function updatePay(){
+    var targetNode = document.getElementById("overview-sight-div");
+    var newHTML;
+
+    newHTML =
+    '<table class="overview-table">' +
+    ' <tbody>' +
+    '  <tr>' +
+    '   <th>' +
+    '    <p>Option</p>' +
+    '   </th>' +
+    '   <th>' +
+    '    <p>Ihre Auswahl</p>' +
+    '   </th>' +
+    '  <tr>' +
+    '  <tr>' +
+    '   <td>' +
+    '    <p>Service</p>' +
+    '   </td>' +
+    '   <td>' +
+    '    <p>Städtetour</p>' +
+    '   </td>' +
+    '  <tr>';
+
+    //when we are searching a string for an occurence of '-' to determine, when the actual property name starts,
+    //we need to ignore the first - after 'tourism-'. therefore we may skip tourismDescriptorOffset
+    //chars on indexOf(...)-search.
+    var tourismDescriptorOffset = "tourism-".length;
+
+    // process city value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Tour</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+values.city.slice(values.city.indexOf('-')+1)+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+    
+    // process sights value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Tour</p></td>';
+    newHTML += '<td>';
+    for(i=0; i<values.sights.length;i++)
+    {
+        newHTML += "<p>"+values.sights[i].slice(values.sights[i].indexOf('-')+1)+"</p>";
+    }
+    newHTML += '</td>';
+    newHTML += '</tr>';
+    
+    // process car value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Auto</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+values.car.slice(values.car.indexOf('-')+1)+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    // process interior
+    newHTML += '<tr>';
+    newHTML += '<td><p>Innenraum</p></td>';
+    newHTML += '<td>';
+    for(i=0; i<values.interior.length;i++)
+    {
+        newHTML += "<p>"+values.interior[i].slice(values.interior[i].indexOf('-')+1)+"</p>";
+    }
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    //process extras
+    newHTML += '<tr>';
+    newHTML += '<td><p>Extras</p></td>';
+    newHTML += '<td>';
+    for(i=0; i<values.extra.length;i++)
+    {
+        newHTML += "<p>"+values.extra[i].slice(values.extra[i].indexOf('-')+1)+"</p>";
+    }
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    // process start city value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Abfahrtsort</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+document.getElementById("startcity").value+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    // process start date value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Abfahrtsdatum</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+document.getElementById("startdate").value+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    // process destination city value
+    newHTML += '<tr>';
+    newHTML += '<td><p>Ankunftsort</p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+document.getElementById("endcity").value+"</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    // add some price
+    newHTML += '<tr>';
+    newHTML += '<td><p>Gesamtkosten </p></td>';
+    newHTML += '<td>';
+    newHTML += "<p>"+Math.floor((Math.random() * 100) + 20) +",95€</p>";
+    newHTML += '</td>';
+    newHTML += '</tr>';
+
+    newHTML +=
+    ' </tbody>' +
+    '</table>';
+
+    targetNode.innerHTML = newHTML;
+  
   var curImage, curDescr;
 
-  //when we are searching a string for an occurence of '-' to determine, when the actual property name starts,
-  //we need to ignore the first - after 'tourism-'. therefore we may skip tourismDescriptorOffset
-  //chars on indexOf(...)-search.
-  var tourismDescriptorOffset = "tourism-".length;
+  
 
   curDescr = document.getElementById("s-chosencity-descr");
   curDescr.innerHTML = "Stadt: "+values.city.slice(values.city.indexOf('-')+1);
