@@ -806,7 +806,7 @@ function change(optionID){
                             '<a onclick="select(this.id)" id="tourism-car-Volvo"><img src="media/options/cars/volvo-1201106_1920.jpg" alt=""/><br><p>Volvo </p></a>';
         }
 
-    if(optionID === "city-Berlin1"){
+    if(optionID === "city-Berlin"){
                     document.getElementById("city-sights").innerHTML =
                             '<a onclick="select(this.id)" id="sight-Brandenburger Tor"><img src="media/options/sights/berlin brandenburg-gate-1041803_1920.jpg" alt=""/><br><p>Brandenburger Tor </p></a>' +
                             '<a onclick="select(this.id)" id="sight-Kanzleramt"><img src="media/options/sights/berlin kanzleramt-637999_1920.jpg" alt=""/><br><p>Kanzleramt </p></a>' +
