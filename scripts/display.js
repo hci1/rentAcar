@@ -292,10 +292,10 @@ function checkData(obj, neighbors, data) {
              }*/
         }
         else if (step === "tfahrt") {
-            if (values["tourism-extra"].length === 0) {
+            /*if (values["tourism-extra"].length === 0) {
                 alert("Bitte wählen Sie mindestens ein Extra aus!");
                 return;
-            }
+             }*/
         }
         else if (step === "tzahlung") {
             //Übersicht
