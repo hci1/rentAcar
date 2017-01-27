@@ -383,7 +383,10 @@ function checkConditions(data) {
 
     switch (data) {
         case "success":
-            if (isEmpty(values.payment)) {
+            if (!isEmpty(values.payment) || !isEmpty(values["tourism-payment"])) {
+
+            }
+            else {
                 alert("Bitte wählen Sie eine Zahlungsmethode aus!");
                 return false;
             }
